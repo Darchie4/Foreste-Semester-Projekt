@@ -16,15 +16,23 @@ public class Game
     private void createRooms()
     {
         Room outside, theatre, pub, lab, office;
-        FacilityRoom facility;
-
         outside = new Room("outside the main entrance of the university");
         theatre = new Room("in a lecture theatre");
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
+
+        FacilityRoom facility;
         facility = new FacilityRoom("Du er nu på genbrugsstationen");
         createFacilities(facility);
+
+        Biome forest, playground, park, beach;
+        playground = new Biome("du er tager over til legepladsen", 10);
+        forest = new Biome("du er på tur i parken", 15);
+        park = new Biome("du er på tur i skoven", 20);
+        beach = new Biome("du er taget til stranden", 25);
+
+
 
         outside.setExit("east", theatre);
         outside.setExit("south", lab);
@@ -54,6 +62,12 @@ public class Game
                 "Her i putter du flasker og dåser med pant", PlasticType.PANT, 3 );
         facility.setFacility(pantMachine);
     }
+
+
+
+
+
+
     public void play() 
     {            
         printWelcome();

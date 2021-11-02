@@ -8,8 +8,6 @@ package worldofzuul;
  * Accepted plastic types are ints and is noted as: 1 = bloedplast, 2 = haardplast, 3 = pant
  * */
 
-//Brug enum til plasttyper
-
 
 public class Facility {
     private String name;
@@ -64,4 +62,4 @@ public class Facility {
             System.out.println("ØV! Det er desværre den forkerte slags plastik. Ingen point :(");
     }
 }
-}
+
