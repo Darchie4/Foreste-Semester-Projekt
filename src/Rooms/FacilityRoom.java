@@ -1,12 +1,11 @@
-package worldofzuul;
+package Rooms;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class FacilityRoom extends Room {
     private ArrayList<Facility> facilities = new ArrayList<Facility>();
 
-    FacilityRoom(String description){
+    public FacilityRoom(String description){
         super(description);
     }
 

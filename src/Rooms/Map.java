@@ -1,4 +1,4 @@
-package worldofzuul;
+package Rooms;
 
 public class Map {
 }

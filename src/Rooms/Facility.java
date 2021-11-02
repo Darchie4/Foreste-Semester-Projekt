@@ -1,4 +1,6 @@
-package worldofzuul;
+package Rooms;
+
+import worldofzuul.PlasticType;
 
 /**
  * Facilities "use method" takes in a plastictype as an int and compares it to the accepted type.
@@ -15,7 +17,7 @@ public class Facility {
     private PlasticType acceptedPlasticType;
     private int reward;
 
-    Facility(String name, String description, PlasticType acceptedPlasticType, int reward){
+    public Facility(String name, String description, PlasticType acceptedPlasticType, int reward){
         this.description = description;
         this.name = name;
         this.acceptedPlasticType = acceptedPlasticType;

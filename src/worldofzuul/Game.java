@@ -1,6 +1,11 @@
 package worldofzuul;
 
-public class Game 
+import Rooms.Biome;
+import Rooms.Facility;
+import Rooms.FacilityRoom;
+import Rooms.Room;
+
+public class Game
 {
     private Parser parser;
     private Room currentRoom;

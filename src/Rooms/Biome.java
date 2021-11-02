@@ -1,4 +1,4 @@
-package worldofzuul;
+package Rooms;
 
 public class Biome extends Room{
     private int plasticAmount;
@@ -25,7 +25,4 @@ public class Biome extends Room{
     {
         return this.plasticAmount;
     }
-
-
-
 }
