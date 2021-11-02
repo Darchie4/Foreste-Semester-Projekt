@@ -16,7 +16,6 @@ public class Shop extends Room {
         super(description);
         this.inventory = new Inventory();
         this.inventory.addItem(items);
-
     }
 
     public ArrayList<Item> getAllItems() {

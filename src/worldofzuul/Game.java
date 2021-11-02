@@ -71,10 +71,10 @@ public class Game
     }
 
     public void createShop(Shop shop) throws FullInventoryException {
-        Item Trashgrabber = new Equipment(); //add parameters
+        Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op"); //add parameters
         ArrayList<Item> temp = new ArrayList<Item>();
         temp.add(Trashgrabber);
-        shop = new Shop(temp, "Uses less energy to pick up plastic");
+        shop = new Shop(temp, "Her kan du købe ting, som hjælper dig med at samle plastik op med");
     }
 
 
