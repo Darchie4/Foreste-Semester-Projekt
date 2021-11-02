@@ -4,7 +4,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+
 
     public Game() 
     {
@@ -16,13 +16,16 @@ public class Game
     private void createRooms()
     {
         Room outside, theatre, pub, lab, office;
-      
+        FacilityRoom facility;
+
         outside = new Room("outside the main entrance of the university");
         theatre = new Room("in a lecture theatre");
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
-        
+        facility = new FacilityRoom("Du er nu på genbrugsstationen");
+        createFacilities(facility);
+
         outside.setExit("east", theatre);
         outside.setExit("south", lab);
         outside.setExit("west", pub);
@@ -35,10 +38,22 @@ public class Game
         lab.setExit("east", office);
 
         office.setExit("west", lab);
-
         currentRoom = outside;
     }
 
+    public void createFacilities(FacilityRoom facility){
+        Facility hardContainer = new Facility("hård plastik container",
+                "Her i putter du hård plastik", PlasticType.HARD, 2 );
+        facility.setFacility(hardContainer);
+
+        Facility softContainer = new Facility("blød plastik container",
+                "Her i putter du blød plastik", PlasticType.SOFT, 1 );
+        facility.setFacility(softContainer);
+        //Brug unicode karakter istedet for æøå
+        Facility pantMachine = new Facility("pantautomat",
+                "Her i putter du flasker og dåser med pant", PlasticType.PANT, 3 );
+        facility.setFacility(pantMachine);
+    }
     public void play() 
     {            
         printWelcome();
