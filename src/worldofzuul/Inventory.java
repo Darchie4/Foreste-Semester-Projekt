@@ -18,6 +18,12 @@ public class Inventory {
         }
         this.items.add(item);
     }
+    public void addItem(ArrayList<Item> item) throws FullInventoryException {
+        if (items.size()+1 > inventorySize){
+            throw new FullInventoryException();
+        }
+        this.items.addAll(item);
+    }
 
     public void removeItem(Item item){
         this.items.remove(item);

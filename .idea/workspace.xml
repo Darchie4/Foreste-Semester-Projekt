@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="44a8fe91-307c-4797-9d7d-4dd774966612" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Biome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Biome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Facility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Facility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rooms/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Equipment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +64,7 @@
       <module name="Første_semester" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="worldofzuul.*" />
+          <option name="PATTERN" value="Rooms.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -88,7 +88,7 @@
       <updated>1635844174368</updated>
       <workItem from="1635844176631" duration="66000" />
       <workItem from="1635844255893" duration="1778000" />
-      <workItem from="1635851105623" duration="13229000" />
+      <workItem from="1635851105623" duration="17288000" />
     </task>
     <servers />
   </component>
