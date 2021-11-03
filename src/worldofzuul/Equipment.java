@@ -15,7 +15,8 @@ public class Equipment extends Item{
         return this.modifier;
     }
 
-    public int getPrice() {
+    public int getPrice()
+    {
         return this.price;
     }
     public Equipment(String name, String description) {
