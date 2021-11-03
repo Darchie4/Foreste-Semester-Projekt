@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="44a8fe91-307c-4797-9d7d-4dd774966612" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rooms/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Shop.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -87,7 +86,7 @@
       <workItem from="1635844176631" duration="66000" />
       <workItem from="1635844255893" duration="1778000" />
       <workItem from="1635851105623" duration="18979000" />
-      <workItem from="1635937726805" duration="330000" />
+      <workItem from="1635937726805" duration="1797000" />
     </task>
     <servers />
   </component>
