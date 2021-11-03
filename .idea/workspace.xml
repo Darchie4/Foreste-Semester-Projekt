@@ -15,6 +15,7 @@
       <change afterPath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Biome.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 
+
       <change beforePath="$PROJECT_DIR$/src/Rooms/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Shop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Command.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/CommandWord.class" beforeDir="false" />
@@ -41,8 +42,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -112,10 +113,12 @@
       <workItem from="1635844176631" duration="66000" />
       <workItem from="1635844255893" duration="1778000" />
 
+
       <workItem from="1635937726805" duration="330000" />
       <workItem from="1635851105623" duration="13229000" />
       <workItem from="1635931031372" duration="61000" />
       <workItem from="1635937642817" duration="1112000" />
+      <workItem from="1635851105623" duration="18979000" />
 
     </task>
     <servers />
