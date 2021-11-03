@@ -10,7 +10,6 @@ public class Game
     private Parser parser;
     private Room currentRoom;
 
-
     public Game() 
     {
         createRooms();
@@ -38,7 +37,6 @@ public class Game
         forest = new Biome("du er på tur i parken", 15);
         park = new Biome("du er på tur i skoven", 20);
         beach = new Biome("du er taget til stranden", 25);
-
 
 
         outside.setExit("east", theatre);

@@ -58,7 +58,7 @@ public class Facility {
 
     public void use(PlasticType plasticType){
         if (plasticType == acceptedPlasticType) {
-            player.addPoints(this.reward);
+            Game.player.addPoints(this.reward);
             System.out.println("Hurrah! det var den rigtige slags plastik. Du får " + this.reward + " point :)");
         } else
             System.out.println("ØV! Det er desværre den forkerte slags plastik. Ingen point :(");

@@ -22,17 +22,15 @@ public class Shop extends Room {
         return inventory.getItems();
     }
 
-    public void buy (Item item){
+    public void buy (Equipment item){
 
-        if (player.points >= ((Equipment) item).getPrice()) {
-            player.inventory.addItem(item);
-            player.subtractPoint(((Equipment) item).getPrice());
+        if (Game.player.points >= (item.getPrice())) {
+            Game.player.inventory.addItem(item);
+            Game.player.subtractPoint(item.getPrice());
             this.inventory.removeItem(item);
         }
         else
             System.out.println("Du har desværre ikke nok point :(");
 
-
     }
-
 }
