@@ -26,4 +26,8 @@ public class Inventory {
     public ArrayList<Item> getItems() {
         return (ArrayList<Item>) this.items.clone();
     }
+
+    public ArrayList<Item> getItemsCloned() {
+        return (ArrayList<Item>) this.items.clone();
+    }
 }

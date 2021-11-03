@@ -1,6 +1,6 @@
 package worldofzuul;
 
 public interface Placeble {
-    Object pickup();
-    void place(Object o);
+    Placeble pickup(Player p);
+    void place(Placeble o);
 }

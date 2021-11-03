@@ -9,12 +9,14 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    public static Player player;
 
 
-    public Game() 
+    public Game(Player player)
     {
         createRooms();
-        parser = new Parser();
+        this.parser = new Parser();
+        this.player = player;
     }
 
 
@@ -69,15 +71,9 @@ public class Game
     }
 
 
-
-
-
-
-    public void play() 
-    {            
+    public void play(){
         printWelcome();
 
-                
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
