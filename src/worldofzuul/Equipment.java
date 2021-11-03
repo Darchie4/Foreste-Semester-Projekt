@@ -17,6 +17,7 @@ public class Equipment extends Item{
 
     public int getPrice() {
         return this.price;
+    }
     public Equipment(String name, String description) {
         super(name, description);
     }
