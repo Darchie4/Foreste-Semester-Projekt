@@ -9,11 +9,14 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    public static Player player;
 
-    public Game() 
+
+    public Game(Player player)
     {
         createRooms();
-        parser = new Parser();
+        this.parser = new Parser();
+        this.player = player;
     }
 
 
@@ -67,8 +70,7 @@ public class Game
                 "Her i putter du flasker og dåser med pant", PlasticType.PANT, 3 );
         facility.setFacility(pantMachine);
     }
-
-    public void createShop(Shop shop) throws FullInventoryException {
+     public void createShop(Shop shop) throws FullInventoryException {
         Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op"); //add parameters
         ArrayList<Item> temp = new ArrayList<Item>();
         temp.add(Trashgrabber);
@@ -77,12 +79,10 @@ public class Game
 
 
 
+    public void play(){
 
-    public void play() 
-    {            
         printWelcome();
 
-                
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();

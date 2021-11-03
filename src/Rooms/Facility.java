@@ -1,5 +1,6 @@
 package Rooms;
 
+import worldofzuul.Game;
 import worldofzuul.PlasticType;
 
 /**
