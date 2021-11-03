@@ -1,8 +1,8 @@
 package worldofzuul;
 
 public abstract class Item implements Printable{
-    private String name;
-    private String description;
+    protected String name;
+    protected String description;
 
     public Item(String name, String description) {
         this.name = name;

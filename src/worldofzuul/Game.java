@@ -1,9 +1,9 @@
 package worldofzuul;
 
-import Rooms.Biome;
-import Rooms.Facility;
-import Rooms.FacilityRoom;
-import Rooms.Room;
+import Exceptions.FullInventoryException;
+import Rooms.*;
+
+import java.util.ArrayList;
 
 public class Game
 {
@@ -32,13 +32,14 @@ public class Game
         FacilityRoom facility;
         facility = new FacilityRoom("Du er nu på genbrugsstationen");
         createFacilities(facility);
+        Shop shop;
+
 
         Biome forest, playground, park, beach;
         playground = new Biome("du er tager over til legepladsen", 10);
         forest = new Biome("du er på tur i parken", 15);
         park = new Biome("du er på tur i skoven", 20);
         beach = new Biome("du er taget til stranden", 25);
-
 
 
         outside.setExit("east", theatre);
@@ -69,9 +70,17 @@ public class Game
                 "Her i putter du flasker og dåser med pant", PlasticType.PANT, 3 );
         facility.setFacility(pantMachine);
     }
+     public void createShop(Shop shop) throws FullInventoryException {
+        Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op"); //add parameters
+        ArrayList<Item> temp = new ArrayList<Item>();
+        temp.add(Trashgrabber);
+        shop = new Shop(temp, "Her kan du købe ting, som hjælper dig med at samle plastik op med");
+    }
+
 
 
     public void play(){
+
         printWelcome();
 
         boolean finished = false;

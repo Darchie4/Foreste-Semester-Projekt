@@ -1,5 +1,7 @@
 package worldofzuul;
 
+
+
 public class Plastic extends Item implements Placeble{
     private int costOfPickup;
     private PlasticType type;
@@ -18,12 +20,12 @@ public class Plastic extends Item implements Placeble{
     @Override
     public void place(Placeble o) {
 
-    }
-
+    } 
     @Override
     public void print() {
 
     }
+
 
     @Override
     public String toString() {

@@ -14,6 +14,8 @@
       <change afterPath="$PROJECT_DIR$/out/production/Første_semester/Exceptions/OutOfPointsException.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Biome.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/src/Rooms/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Shop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Command.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/CommandWord.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/CommandWords.class" beforeDir="false" />
@@ -29,6 +31,7 @@
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Placeble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Placeble.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +79,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -83,7 +87,7 @@
       <module name="Første_semester" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="worldofzuul.*" />
+          <option name="PATTERN" value="Rooms.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -107,9 +111,12 @@
       <updated>1635844174368</updated>
       <workItem from="1635844176631" duration="66000" />
       <workItem from="1635844255893" duration="1778000" />
+
+      <workItem from="1635937726805" duration="330000" />
       <workItem from="1635851105623" duration="13229000" />
       <workItem from="1635931031372" duration="61000" />
       <workItem from="1635937642817" duration="1112000" />
+
     </task>
     <servers />
   </component>
