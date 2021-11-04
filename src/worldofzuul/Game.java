@@ -75,11 +75,16 @@ public class Game
                 "Her i putter du flasker og dåser med pant", PlasticType.PANT, 3 );
         facility.setFacility(pantMachine);
     }
-     public void createShop(Shop shop) throws FullInventoryException {
-        Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op", "Gribetang"); //add parameters
-        ArrayList<Item> temp = new ArrayList<Item>();
-        temp.add(Trashgrabber);
-        shop = new Shop(temp, "Her kan du købe ting, som hjælper dig med at samle plastik op med");
+     public Shop createShop()  {
+        try {
+            Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op", "Gribetang"); //add parameters
+            ArrayList<Item> temp = new ArrayList<Item>();
+            temp.add(Trashgrabber);
+            return new Shop(temp, "Her kan du købe ting, som hjælper dig med at samle plastik op med");
+        } catch (FullInventoryException ex){
+            System.out.println("A fatal error has occured when creating shop");
+            return null;
+        }
     }
 
 
