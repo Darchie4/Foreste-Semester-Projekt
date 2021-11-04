@@ -1,7 +1,9 @@
 package Rooms;
 
 import Exceptions.FullInventoryException;
+import Exceptions.OutOfPointsException;
 import worldofzuul.Equipment;
+import worldofzuul.Game;
 import worldofzuul.Inventory;
 import worldofzuul.Item;
 
@@ -22,11 +24,11 @@ public class Shop extends Room {
         return inventory.getItems();
     }
 
-    public void buy (Equipment item){
+    public void buy (Equipment item) throws FullInventoryException, OutOfPointsException {
 
-        if (Game.player.points >= (item.getPrice())) {
-            Game.player.inventory.addItem(item);
-            Game.player.subtractPoint(item.getPrice());
+        if (Game.player.getPoints() >= (item.getPrice())) {
+            Game.player.addItemToInventory(item);
+            Game.player.subtractPoints(item.getPrice());
             this.inventory.removeItem(item);
         }
         else

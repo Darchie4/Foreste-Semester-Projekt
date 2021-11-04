@@ -2,11 +2,11 @@ package worldofzuul;
 
 public class Equipment extends Item{
 
-      int modifier;
+    int modifier;
     int price;
 
-    Equipment(int modifier, int price, String description){
-        this.description = description;
+    Equipment(int modifier, int price, String description, String name){
+        super(name, description);
         this.modifier = modifier;
         this.price = price;
     }
@@ -17,8 +17,6 @@ public class Equipment extends Item{
 
     public int getPrice() {
         return this.price;
-    public Equipment(String name, String description) {
-        super(name, description);
     }
 
     @Override

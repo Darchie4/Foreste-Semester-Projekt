@@ -19,42 +19,48 @@ public class Game
         this.player = player;
     }
 
-
     private void createRooms()
     {
-        Room outside, theatre, pub, lab, office;
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
+        Room home, map;
+        map = new Room("du kigger på kortet");
+        home = new Room("Du er nu derhjemme");
+        home.setExit("kort", map);
 
-        FacilityRoom facility;
-        facility = new FacilityRoom("Du er nu på genbrugsstationen");
+
+        // facility creation
+
+        FacilityRoom facility = new FacilityRoom("Du er nu på genbrugsstationen");
         createFacilities(facility);
-        Shop shop;
+        facility.setExit("hjem", home);
 
+        // shop creation
+        Shop shop = createShop();
+        shop.setExit("hjem", home);
 
+        // biome creation
         Biome forest, playground, park, beach;
         playground = new Biome("du er tager over til legepladsen", 10);
+        playground.setExit("hjem", home);
+
         forest = new Biome("du er på tur i parken", 15);
+        forest.setExit("hjem", home);
+
         park = new Biome("du er på tur i skoven", 20);
+        park.setExit("hjem", home);
+
         beach = new Biome("du er taget til stranden", 25);
+        beach.setExit("hjem", home);
+
+        map.setExit("Legepladsen", playground);
+        map.setExit("Parken", park);
+        map.setExit("Skoven", forest);
+        map.setExit("Stranden",beach);
+        map.setExit("Genbrugsstationen",facility);
+        map.setExit("Butikken", shop);
+        map.setExit("Hjem", home);
 
 
-        outside.setExit("east", theatre);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-
-        theatre.setExit("west", outside);
-
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-        lab.setExit("east", office);
-
-        office.setExit("west", lab);
-        currentRoom = outside;
+        currentRoom = home;
     }
 
     public void createFacilities(FacilityRoom facility){
@@ -70,13 +76,17 @@ public class Game
                 "Her i putter du flasker og dåser med pant", PlasticType.PANT, 3 );
         facility.setFacility(pantMachine);
     }
-     public void createShop(Shop shop) throws FullInventoryException {
-        Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op"); //add parameters
-        ArrayList<Item> temp = new ArrayList<Item>();
-        temp.add(Trashgrabber);
-        shop = new Shop(temp, "Her kan du købe ting, som hjælper dig med at samle plastik op med");
+     public Shop createShop() throws RuntimeException{
+         try {
+             Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op", "Gribetang"); //add parameters
+             ArrayList<Item> temp = new ArrayList<Item>();
+             temp.add(Trashgrabber);
+             return new Shop(temp, "Her kan du købe ting, som hjælper dig med at samle plastik op med");
+         } catch (FullInventoryException e){
+            System.out.println(e);
+            throw new RuntimeException("There has been a critical during shop creation");
+         }
     }
-
 
 
     public void play(){

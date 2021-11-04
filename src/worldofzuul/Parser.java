@@ -1,9 +1,10 @@
 package worldofzuul;
 
+import javax.sound.midi.SysexMessage;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
-public class Parser 
+public class Parser
 {
     private CommandWords commands;
     private Scanner reader;

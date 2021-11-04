@@ -4,12 +4,15 @@ import worldofzuul.Game;
 
 public class Home extends Room{
 
-    Home(String description){
+    public Home(String description){
         super(description);
     }
 
-    void sleep (){
+    public void sleep (){
         Game.player.setEnergyToMax();
     }
-
 }
+
+
+
+

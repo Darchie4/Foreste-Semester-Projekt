@@ -8,4 +8,5 @@ public abstract class Item implements Printable{
         this.name = name;
         this.description = description;
     }
+
 }
