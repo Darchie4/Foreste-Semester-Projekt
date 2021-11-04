@@ -8,8 +8,9 @@ public class Inventory {
     ArrayList<Item> items;
     int inventorySize;
 
-    public Inventory() {
+    public Inventory(int invenctorySize) {
         this.items = new ArrayList<>();
+        this.inventorySize = invenctorySize;
     }
 
     public void addItem(Item item) throws FullInventoryException {

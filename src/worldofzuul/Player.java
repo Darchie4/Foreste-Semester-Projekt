@@ -10,7 +10,7 @@ public class Player {
     private int maxEnergy;
 
     public Player() {
-        this.inventory = new Inventory();
+        this.inventory = new Inventory(10);
         this.itemInHand = null;
         this.maxEnergy = 100;
         this.energy = maxEnergy;

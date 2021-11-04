@@ -16,7 +16,7 @@ public class Shop extends Room {
     public Shop(ArrayList<Item> items, String description) throws FullInventoryException //
     {
         super(description);
-        this.inventory = new Inventory();
+        this.inventory = new Inventory(5);
         this.inventory.addItem(items);
     }
 

@@ -41,10 +41,10 @@ public class Game
         playground = new Biome("du er tager over til legepladsen", 10);
         playground.setExit("hjem", home);
 
-        forest = new Biome("du er på tur i parken", 15);
+        forest = new Biome("du er på tur i skoven", 15);
         forest.setExit("hjem", home);
 
-        park = new Biome("du er på tur i skoven", 20);
+        park = new Biome("du er på tur i parken", 20);
         park.setExit("hjem", home);
 
         beach = new Biome("du er taget til stranden", 25);
@@ -103,8 +103,8 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Hej dette er \" plastik fantastik spillet" );
+        System.out.println("Her skal du kunne");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -117,7 +117,7 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("Undskyld, det forstod jeg ikke");
             return false;
         }
 
@@ -135,17 +135,16 @@ public class Game
 
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
-        System.out.println();
-        System.out.println("Your command words are:");
+        System.out.println("Du har spurgt om hjælp");
+        System.out.println(currentRoom.getShortDescription() + "\n");
+        System.out.println("Dette kan du gøre:");
         parser.showCommands();
     }
 
     private void goRoom(Command command) 
     {
         if(!command.hasSecondWord()) {
-            System.out.println("Go where?");
+            System.out.println("Hvor vil du hen igen?");
             return;
         }
 
@@ -154,7 +153,7 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("Hov! Der kan du ikke gå hen :(");
         }
         else {
             currentRoom = nextRoom;
@@ -165,7 +164,7 @@ public class Game
     private boolean quit(Command command) 
     {
         if(command.hasSecondWord()) {
-            System.out.println("Quit what?");
+            System.out.println("gå ud af hvad?");
             return false;
         }
         else {
