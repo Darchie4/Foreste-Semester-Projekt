@@ -5,8 +5,9 @@ public class Equipment extends Item{
     int modifier;
     int price;
 
-        super(name, description);
+
     Equipment(int modifier, int price, String description, String name){
+        super(name, description);
         this.modifier = modifier;
         this.price = price;
     }
