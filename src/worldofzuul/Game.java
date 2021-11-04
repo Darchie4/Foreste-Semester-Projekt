@@ -76,7 +76,7 @@ public class Game
         facility.setFacility(pantMachine);
     }
      public void createShop(Shop shop) throws FullInventoryException {
-        Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op"); //add parameters
+        Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op", "Gribetang"); //add parameters
         ArrayList<Item> temp = new ArrayList<Item>();
         temp.add(Trashgrabber);
         shop = new Shop(temp, "Her kan du købe ting, som hjælper dig med at samle plastik op med");

@@ -18,12 +18,10 @@ public class Equipment extends Item{
     public int getPrice()
     {
         return this.price;
-<<<<<<< HEAD
-=======
+
     }
     public Equipment(String name, String description) {
         super(name, description);
->>>>>>> 809f79cd2009984962cd81b28120e358fff2705e
     }
 
     @Override
