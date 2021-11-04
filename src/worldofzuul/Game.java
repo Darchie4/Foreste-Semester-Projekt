@@ -1,9 +1,13 @@
 package worldofzuul;
 
+import Exceptions.EmptyHandException;
+import Exceptions.FullHandException;
 import Exceptions.FullInventoryException;
+import Exceptions.OutOfPointsException;
 import Rooms.*;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Game
 {
@@ -15,7 +19,7 @@ public class Game
     public Game(Player player) {
         createRooms();
         this.parser = new Parser();
-        this.player = player;
+        Game.player = player;
     }
 
     private void createRooms()
@@ -105,7 +109,7 @@ public class Game
         System.out.println();
         System.out.println("Hej dette er \" plastik fantastik spillet" );
         System.out.println("Her skal du kunne");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("Har du brug for hjælp skriv \"" + CommandWord.HELP + "\"");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -123,12 +127,52 @@ public class Game
 
         if (commandWord == CommandWord.HELP) {
             printHelp();
-        }
-        else if (commandWord == CommandWord.GO) {
+        } else if (commandWord == CommandWord.GO) {
             goRoom(command);
-        }
-        else if (commandWord == CommandWord.QUIT) {
+        } else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
+        } else if (commandWord == CommandWord.BUY) {
+            if (currentRoom instanceof Shop shopping) {
+                for (Item item : shopping.getAllItems()) {
+                    if (item.getName().equals(command.getSecondWord())) {
+                        try {
+                            shopping.buy((Equipment) item);
+                        } catch (FullInventoryException ex) {
+                            System.out.println("Du har desværre ikke plads til genstanden");
+                        } catch (OutOfPointsException ex) {
+                            System.out.println("Du har desværre ikke nok point til genstanden");
+                        }
+                    }
+                }
+            }
+        } else if (commandWord == CommandWord.COLLECT){
+            player.addItemToInventory(); //Mads skal implementere dette. Der er behov for et checkup på grid location.
+        } else if (commandWord == CommandWord.USE){
+            for (Item item: player.getInventory()) {
+                if(item.getName().equals(command.getSecondWord()))
+                    try {
+                        player.addItemToHand(item);
+                    } catch (FullHandException ex) {
+                        System.out.println("Du har allerede en ting i hænderne!");
+                    }
+            }
+        } else if (commandWord == CommandWord.REMOVE){
+            try {
+                player.removeItemFromHand();
+            } catch (EmptyHandException ex){
+                System.out.println("Du har intet i hænderne!");
+            }
+        } else if (commandWord == CommandWord.RECYCLE){
+            if (currentRoom instanceof FacilityRoom room) {
+                for (Item item : player.getInventory()) {
+                    if (item.getName().equals(command.getSecondWord())) {
+                        System.out.println("Hvor vil du sortere dit plastik? ");
+                        // dette kan gøres så med O(1) istedet for O(n), hvis vi implementerer et hashmap.
+                        room.getFacilities().;
+                        player.removeItemFromInventory(item);
+                    }
+                }
+            }
         }
         return wantToQuit;
     }

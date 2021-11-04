@@ -2,6 +2,8 @@ package worldofzuul;
 
 import Exceptions.*;
 
+import java.util.ArrayList;
+
 public class Player {
     private Inventory inventory;
     private Item itemInHand;
@@ -17,6 +19,9 @@ public class Player {
         this.points = 0;
     }
 
+    public ArrayList<Item> getInventory() {
+        return inventory.getItems();
+    }
     //////////////////////////
     //// Under here is    ////
     //// Points handeling ////
