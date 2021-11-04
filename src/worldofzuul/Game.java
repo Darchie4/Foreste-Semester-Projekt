@@ -12,8 +12,7 @@ public class Game
     public static Player player;
 
 
-    public Game(Player player)
-    {
+    public Game(Player player) {
         createRooms();
         this.parser = new Parser();
         this.player = player;
@@ -76,16 +75,11 @@ public class Game
                 "Her i putter du flasker og dåser med pant", PlasticType.PANT, 3 );
         facility.setFacility(pantMachine);
     }
-     public Shop createShop() throws RuntimeException{
-         try {
-             Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op", "Gribetang"); //add parameters
-             ArrayList<Item> temp = new ArrayList<Item>();
-             temp.add(Trashgrabber);
-             return new Shop(temp, "Her kan du købe ting, som hjælper dig med at samle plastik op med");
-         } catch (FullInventoryException e){
-            System.out.println(e);
-            throw new RuntimeException("There has been a critical during shop creation");
-         }
+     public void createShop(Shop shop) throws FullInventoryException {
+        Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op"); //add parameters
+        ArrayList<Item> temp = new ArrayList<Item>();
+        temp.add(Trashgrabber);
+        shop = new Shop(temp, "Her kan du købe ting, som hjælper dig med at samle plastik op med");
     }
 
 

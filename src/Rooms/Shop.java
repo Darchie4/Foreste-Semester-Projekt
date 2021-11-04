@@ -30,9 +30,9 @@ public class Shop extends Room {
             Game.player.addItemToInventory(item);
             Game.player.subtractPoints(item.getPrice());
             this.inventory.removeItem(item);
-        }
-        else
+        } else {
             System.out.println("Du har desværre ikke nok point :(");
+        }
 
     }
 }
