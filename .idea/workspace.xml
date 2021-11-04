@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2d356aba-2cd1-484e-9d6b-8e964d8d8c01" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/Rooms/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Home.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Rooms/Map.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Rooms/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Shop.java" afterDir="false" />
@@ -13,6 +14,9 @@
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Parser.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Equipment.java" afterDir="false" />
+>>>>>>> 809f79cd2009984962cd81b28120e358fff2705e
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,8 +101,12 @@
       <workItem from="1635931031372" duration="61000" />
       <workItem from="1635937642817" duration="1112000" />
       <workItem from="1635851105623" duration="18979000" />
+<<<<<<< HEAD
       <workItem from="1635940591444" duration="2968000" />
       <workItem from="1635945507760" duration="108000" />
+=======
+      <workItem from="1635975009713" duration="602000" />
+>>>>>>> 809f79cd2009984962cd81b28120e358fff2705e
     </task>
     <servers />
   </component>
