@@ -2,6 +2,6 @@ package Exceptions;
 
 public class EmptyHandException extends IlleagleItemMovementException{
     public EmptyHandException() {
-        super("Hand is empty!");
+        super("Du har intet i hænderne!"));
     }
 }

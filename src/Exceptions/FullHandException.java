@@ -2,6 +2,6 @@ package Exceptions;
 
 public class FullHandException extends IlleagleItemMovementException{
     public FullHandException(){
-        super("Can't put item in full hand");
+        super("Du har allerede en ting i hænderne!");
     }
 }

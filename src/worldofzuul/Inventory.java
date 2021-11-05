@@ -19,7 +19,7 @@ public class Inventory {
         }
         this.items.add(item);
     }
-    public void addItem(ArrayList<Item> item) throws FullInventoryException {
+    public void addItemList(ArrayList<Item> item) throws FullInventoryException {
         if (items.size()+1 > inventorySize){
             throw new FullInventoryException();
         }
@@ -39,11 +39,6 @@ public class Inventory {
         this.items.remove(item);
     }
 
-    public ArrayList<Item> getItems() {
-        return (ArrayList<Item>) this.items.clone();
-    }
+    public ArrayList<Item> getItems() {return (ArrayList<Item>) this.items.clone();}
 
-    public ArrayList<Item> getItemsCloned() {
-        return (ArrayList<Item>) this.items.clone();
-    }
 }

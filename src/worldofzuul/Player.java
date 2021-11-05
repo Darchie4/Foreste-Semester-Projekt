@@ -2,8 +2,6 @@ package worldofzuul;
 
 import Exceptions.*;
 
-import java.util.ArrayList;
-
 public class Player {
     private Inventory inventory;
     private Item itemInHand;

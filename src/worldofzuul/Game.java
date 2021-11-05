@@ -111,7 +111,7 @@ public class Game {
         System.out.println(currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command) {
+    private boolean processCommand(Command command) throws FullHandException {
         boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
@@ -134,19 +134,15 @@ public class Game {
         } else if (commandWord == CommandWord.COLLECT){
           //  player.addItemToInventory(); //Mads skal implementere dette. Der er behov for et checkup på grid location.
         } else if (commandWord == CommandWord.USE){
-            for (Item item: player.getInventory().getItems()) {
-                if(item.getName().equals(command.getSecondWord()))
-                    try {
-                        player.addItemToHand(item);
-                    } catch (FullHandException ex) {
-                        System.out.println("Du har allerede en ting i hænderne!");
-                    }
+            Item item = player.getInventory().searchItemName(command.getSecondWord());
+                if (player.getItemInHand() == null)
+                    player.addItemToHand(item);
             }
-        } else if (commandWord == CommandWord.REMOVE){
+        else if (commandWord == CommandWord.REMOVE){
             try {
                 player.removeItemFromHand();
             } catch (EmptyHandException ex){
-                System.out.println("Du har intet i hænderne!");
+                System.out.println();
             }
         } else if (commandWord == CommandWord.RECYCLE){
             if (currentRoom instanceof FacilityRoom room) {
