@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2d356aba-2cd1-484e-9d6b-8e964d8d8c01" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rooms/Biome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Biome.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rooms/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Placeble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Placeble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/PlasticType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/PlasticType.java" afterDir="false" />
-    </list>
+    <list default="true" id="2d356aba-2cd1-484e-9d6b-8e964d8d8c01" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +53,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.TestMain">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="worldofzuul.Main" />
       <module name="Første_semester" />
@@ -75,8 +67,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="worldofzuul.TestMain" />
+      <module name="Første_semester" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="worldofzuul.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestMain" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -101,6 +107,7 @@
       <workItem from="1635975009713" duration="602000" />
       <workItem from="1636032784048" duration="223000" />
       <workItem from="1636034140362" duration="3870000" />
+      <workItem from="1636105710391" duration="15597000" />
     </task>
     <servers />
   </component>

@@ -20,6 +20,10 @@ public class Plastic extends Item implements Placeble{
 
     }
 
+    @Override
+    public char getSymbol() {
+        return '<';
+    }
 
     @Override
     public String toString() {
