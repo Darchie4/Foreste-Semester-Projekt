@@ -33,6 +33,17 @@ public class Equipment extends Item{
         modifier+=2;
         price+=15;
     }
+
+    private void formatUpgradeName(){
+        String name = this.getName();
+        String[] nameAndModifiers;
+        nameAndModifiers = name.split("[+]");
+        System.out.println("name: " + nameAndModifiers[0]);
+        System.out.println("modifier: " + nameAndModifiers[1]);
+
+        int postMod = Integer.parseInt(nameAndModifiers[1]) + 1;
+        this.setName(nameAndModifiers[0] + "+" + String.valueOf(postMod)); // "klippeklister" - Anders Clausen 2021
+    }
     
     public Equipment(String name, String description) {
         super(name, description);

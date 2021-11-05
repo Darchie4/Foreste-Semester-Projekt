@@ -39,14 +39,11 @@ public class Shop extends Room {
 
     public void buyUpgrade(Equipment item) throws FullInventoryException, OutOfPointsException{
         if (Game.player.getPoints() >= (item.getPrice())) {
-            for (Item item : Game.player.getInventory().getItems()) {
-                if (item instanceof Equipment equipment) {
-                    //item = (Equipment)item;
+            for (Item inventoryItem : Game.player.getInventory().getItems()) {
+                if (inventoryItem instanceof Equipment equipment) {
                     if (equipment.getId() == 1){
 
                         Game.player.subtractPoints(equipment.getPrice());
-
-
                         equipment.upgrade();
 
                     }

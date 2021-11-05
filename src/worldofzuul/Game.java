@@ -9,8 +9,7 @@ import Rooms.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Game
-{
+public class Game {
     private Parser parser;
     private Room currentRoom;
     public static Player player;
@@ -22,13 +21,11 @@ public class Game
         Game.player = player;
     }
 
-    private void createRooms()
-    {
+    private void createRooms() {
         Room home, map;
         map = new Room("du kigger på kortet");
         home = new Room("Du er nu derhjemme");
         home.setExit("kort", map);
-
 
         // facility creation
 
@@ -105,8 +102,7 @@ public class Game
         System.out.println("Thank you for playing.  Good bye.");
     }
 
-    private void printWelcome()
-    {
+    private void printWelcome() {
         System.out.println();
         System.out.println("Hej dette er \"plastik fantastik\" spillet" );
         System.out.println("Her skal du kunne");
@@ -115,8 +111,7 @@ public class Game
         System.out.println(currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command) 
-    {
+    private boolean processCommand(Command command) {
         boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
@@ -155,10 +150,14 @@ public class Game
             }
         } else if (commandWord == CommandWord.RECYCLE){
             if (currentRoom instanceof FacilityRoom room) {
+                ArrayList<Plastic> foundPlastic;
+                Plastic plastic;
+                Facility chosenFacility;
+
                 String plasticType = command.getSecondWord();
-                ArrayList<Plastic> foundPlastic = getPlasticFromInventory();
-                Plastic plastic = filterPlastic(plasticType, foundPlastic);
-                Facility chosenFacility = selectFacility(room);
+                foundPlastic = getPlasticFromInventory();
+                plastic = filterPlastic(plasticType, foundPlastic);
+                chosenFacility = selectFacility(room);
                 chosenFacility.use(plastic.getType());
             }
         }
@@ -178,7 +177,6 @@ public class Game
             }
         }
     }
-
     private ArrayList<Plastic> getPlasticFromInventory(){
         ArrayList<Plastic> plasticFound = new ArrayList<Plastic>();
         for (Item item: player.getInventory().getItems()) {
@@ -205,16 +203,14 @@ public class Game
     }
 
 
-    private void printHelp() 
-    {
+    private void printHelp() {
         System.out.println("Du har spurgt om hjælp");
         System.out.println(currentRoom.getShortDescription() + "\n");
         System.out.println("Dette kan du gøre:");
         parser.showCommands();
     }
 
-    private void goRoom(Command command) 
-    {
+    private void goRoom(Command command) {
         if(!command.hasSecondWord()) {
             System.out.println("Hvor vil du hen igen?");
             return;
@@ -233,8 +229,7 @@ public class Game
         }
     }
 
-    private boolean quit(Command command) 
-    {
+    private boolean quit(Command command) {
         if(command.hasSecondWord()) {
             System.out.println("gå ud af hvad?");
             return false;
