@@ -2,14 +2,17 @@ package worldofzuul;
 
 public class Equipment extends Item{
 
-    int modifier;
-    int price;
+    private int modifier;
+    private int price;
+    private int id;
+    private int level;
 
-
-    Equipment(int modifier, int price, String description, String name){
+    Equipment(int modifier, int price, String description, String name, int id){
         super(name, description);
         this.modifier = modifier;
         this.price = price;
+        this.id = id;
+        this.level = 0;
     }
 
     public int getModifier() {
@@ -19,6 +22,16 @@ public class Equipment extends Item{
     public int getPrice()
     {
         return this.price;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void upgrade(){
+        level++;
+        modifier+=2;
+        price+=15;
     }
     
     public Equipment(String name, String description) {

@@ -77,7 +77,7 @@ public class Game
     }
      public Shop createShop()  {
         try {
-            Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op", "Gribetang"); //add parameters
+            Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op", "Gribetang",1); //add parameters
             ArrayList<Item> temp = new ArrayList<Item>();
             temp.add(Trashgrabber);
             return new Shop(temp, "Her kan du købe ting, som hjælper dig med at samle plastik op med");
