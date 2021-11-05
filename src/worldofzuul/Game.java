@@ -38,16 +38,16 @@ public class Game
 
         // biome creation
         Biome forest, playground, park, beach;
-        playground = new Biome("du er tager over til legepladsen", 10);
+        playground = new Biome("du er tager over til legepladsen", 10, 6,6);
         playground.setExit("hjem", home);
 
-        forest = new Biome("du er på tur i skoven", 15);
+        forest = new Biome("du er på tur i skoven", 15,8,8);
         forest.setExit("hjem", home);
 
-        park = new Biome("du er på tur i parken", 20);
+        park = new Biome("du er på tur i parken", 20,10,10);
         park.setExit("hjem", home);
 
-        beach = new Biome("du er taget til stranden", 25);
+        beach = new Biome("du er taget til stranden", 25,12,12);
         beach.setExit("hjem", home);
 
         map.setExit("Legepladsen", playground);
