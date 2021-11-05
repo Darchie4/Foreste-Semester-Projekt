@@ -7,6 +7,7 @@ import worldofzuul.Game;
 import worldofzuul.Inventory;
 import worldofzuul.Item;
 
+import javax.swing.plaf.basic.BasicTreeUI;
 import java.util.ArrayList;
 
 public class Shop extends Room {
@@ -35,4 +36,27 @@ public class Shop extends Room {
         }
 
     }
+
+    public void buyUpgrade(Equipment item) throws FullInventoryException, OutOfPointsException{
+        if (Game.player.getPoints() >= (item.getPrice())) {
+            for (Item item : Game.player.getInventory().getItems()) {
+                if (item instanceof Equipment equipment) {
+                    //item = (Equipment)item;
+                    if (equipment.getId() == 1){
+
+                        Game.player.subtractPoints(equipment.getPrice());
+
+
+                        equipment.upgrade();
+
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
 }
