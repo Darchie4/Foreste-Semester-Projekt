@@ -26,6 +26,15 @@ public class Inventory {
         this.items.addAll(item);
     }
 
+    public Item searchItemName (String itemName){
+        for (Item item: this.items) {
+            if (item.getName().equals(itemName))
+                return item;
+        }
+        System.out.println("Det har du ikke på dig");
+        return null;
+    }
+
     public void removeItem(Item item){
         this.items.remove(item);
     }

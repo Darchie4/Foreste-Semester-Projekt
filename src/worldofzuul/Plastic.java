@@ -26,9 +26,7 @@ public class Plastic extends Item implements Placeble{
 
     }
 
-
-    @Override
-    public String toString() {
-        return "Plastic{}";
+    public PlasticType getType() {
+        return type;
     }
 }

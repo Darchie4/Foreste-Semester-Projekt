@@ -6,4 +6,9 @@ public enum PlasticType
 
     private String type;
     PlasticType(String type) { this.type = type;}
+
+    @Override
+    public String toString() {
+        return type;
+    }
 }
