@@ -15,6 +15,7 @@
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/PlasticType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/PlasticType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Equipment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
