@@ -19,8 +19,8 @@ public class Player {
         this.points = 0;
     }
 
-    public ArrayList<Item> getInventory() {
-        return inventory.getItems();
+    public Inventory getInventory() {
+        return inventory;
     }
     //////////////////////////
     //// Under here is    ////

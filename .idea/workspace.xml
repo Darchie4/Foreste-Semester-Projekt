@@ -8,8 +8,14 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/CommandWord.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/CommandWord.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/CommandWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/CommandWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rooms/FacilityRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/FacilityRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/PlasticType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/PlasticType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +103,9 @@
       <workItem from="1635940591444" duration="2968000" />
       <workItem from="1635945507760" duration="108000" />
       <workItem from="1635975009713" duration="602000" />
+      <workItem from="1636052447846" duration="1231000" />
+      <workItem from="1636102156624" duration="4369000" />
+      <workItem from="1636107183749" duration="6307000" />
     </task>
     <servers />
   </component>

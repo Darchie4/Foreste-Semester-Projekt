@@ -1,19 +1,20 @@
 package Rooms;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FacilityRoom extends Room {
-    private ArrayList<Facility> facilities = new ArrayList<Facility>();
 
+    private HashMap<String, Facility> facilities = new HashMap<String, Facility>();
     public FacilityRoom(String description){
         super(description);
     }
 
-    public void setFacility(Facility facility){
-        this.facilities.add(facility);
+    public void setFacility(Facility facility, String name){
+        this.facilities.put(name, facility);
     }
 
-    public ArrayList<Facility> getFacilities() {
+    public HashMap<String, Facility>  getFacilities() {
         return this.facilities;
     }
 }
