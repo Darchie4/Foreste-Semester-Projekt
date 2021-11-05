@@ -1,9 +1,13 @@
 package worldofzuul;
 
+import Exceptions.EmptyHandException;
+import Exceptions.FullHandException;
 import Exceptions.FullInventoryException;
+import Exceptions.OutOfPointsException;
 import Rooms.*;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Game
 {
@@ -15,7 +19,7 @@ public class Game
     public Game(Player player) {
         createRooms();
         this.parser = new Parser();
-        this.player = player;
+        Game.player = player;
     }
 
     private void createRooms()
@@ -63,18 +67,19 @@ public class Game
     }
 
     public void createFacilities(FacilityRoom facility){
-        Facility hardContainer = new Facility("hård plastik container",
-                "Her i putter du hård plastik", PlasticType.HARD, 2 );
-        facility.setFacility(hardContainer);
+        Facility hardContainer = new Facility("h\u00E5rd plastikcontainer",
+                "Her i putter du h\u00E5rd plastik", PlasticType.HARD, 2 );
+        facility.setFacility(hardContainer, "h\u00E5rd plastikcontainer" );
 
-        Facility softContainer = new Facility("blød plastik container",
-                "Her i putter du blød plastik", PlasticType.SOFT, 1 );
-        facility.setFacility(softContainer);
-        //Brug unicode karakter istedet for æøå
+        Facility softContainer = new Facility("bl\u00F8d plastikcontainer",
+                "Her i putter du bl\u00F8d plastik", PlasticType.SOFT, 1 );
+        facility.setFacility(softContainer, "bl\u00F8d plastikcontainer");
+
         Facility pantMachine = new Facility("pantautomat",
-                "Her i putter du flasker og dåser med pant", PlasticType.PANT, 3 );
-        facility.setFacility(pantMachine);
+                "Her i putter du flasker og d\u00E5ser med pant", PlasticType.PANT, 3 );
+        facility.setFacility(pantMachine, "pantautomat");
     }
+
      public Shop createShop()  {
         try {
             Item Trashgrabber = new Equipment(5, 15, "Denne gribetang hjælper dig med at samle plastik op", "Gribetang"); //add parameters
@@ -103,9 +108,9 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Hej dette er \" plastik fantastik spillet" );
+        System.out.println("Hej dette er \"plastik fantastik\" spillet" );
         System.out.println("Her skal du kunne");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("Har du brug for hjælp skriv \"" + CommandWord.HELP + "\"");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -122,16 +127,83 @@ public class Game
         }
 
         if (commandWord == CommandWord.HELP) {
-            printHelp();
-        }
-        else if (commandWord == CommandWord.GO) {
-            goRoom(command);
-        }
-        else if (commandWord == CommandWord.QUIT) {
-            wantToQuit = quit(command);
+                    printHelp();
+        } else if (commandWord == CommandWord.GO) {
+                    goRoom(command);
+        } else if (commandWord == CommandWord.QUIT) {
+                    wantToQuit = quit(command);
+        } else if (commandWord == CommandWord.BUY) {
+            if (currentRoom instanceof Shop shopping) {
+                buyFromShop(shopping, command.getSecondWord());
+            }
+        } else if (commandWord == CommandWord.COLLECT){
+          //  player.addItemToInventory(); //Mads skal implementere dette. Der er behov for et checkup på grid location.
+        } else if (commandWord == CommandWord.USE){
+            for (Item item: player.getInventory().getItems()) {
+                if(item.getName().equals(command.getSecondWord()))
+                    try {
+                        player.addItemToHand(item);
+                    } catch (FullHandException ex) {
+                        System.out.println("Du har allerede en ting i hænderne!");
+                    }
+            }
+        } else if (commandWord == CommandWord.REMOVE){
+            try {
+                player.removeItemFromHand();
+            } catch (EmptyHandException ex){
+                System.out.println("Du har intet i hænderne!");
+            }
+        } else if (commandWord == CommandWord.RECYCLE){
+            if (currentRoom instanceof FacilityRoom room) {
+                String plasticType = command.getSecondWord();
+                ArrayList<Plastic> foundPlastic = getPlasticFromInventory();
+                Plastic plastic = filterPlastic(plasticType, foundPlastic);
+                Facility chosenFacility = selectFacility(room);
+                chosenFacility.use(plastic.getType());
+            }
         }
         return wantToQuit;
     }
+
+    private void buyFromShop (Shop shop, String command) {
+        for (Item item : shop.getAllItems()) {
+            if (item.getName().equals(command)) {
+                try {
+                    shop.buy((Equipment) item);
+                } catch (FullInventoryException ex) {
+                    System.out.println("Du har desværre ikke plads til genstanden");
+                } catch (OutOfPointsException ex) {
+                    System.out.println("Du har desværre ikke nok point til genstanden");
+                }
+            }
+        }
+    }
+
+    private ArrayList<Plastic> getPlasticFromInventory(){
+        ArrayList<Plastic> plasticFound = new ArrayList<Plastic>();
+        for (Item item: player.getInventory().getItems()) {
+            if (item instanceof Plastic plastic)
+                plasticFound.add(plastic);
+        }
+        return plasticFound;
+    }
+    private Plastic filterPlastic(String plasticType, ArrayList<Plastic> plasticCollection){
+        for (Plastic plastic: plasticCollection) {
+            if (plastic.getType().toString().equals(plasticType))
+                return plastic;
+        }
+        System.out.println("Du har intet plastik af den type");
+        return null;
+    }
+    private Facility selectFacility(FacilityRoom room){
+        System.out.println("Hvor vil du gerne sortere dit plastik?");
+        System.out.println("> h\u00E5rd plastikcontainer \n> bl\u00F8d plastikcontainer \n> pantautomat \n");
+        Command command = parser.getCommand();
+        String location = command.getCommandWord().toString().toLowerCase();
+        Facility chosenFacility = room.getFacilities().get(location);
+        return chosenFacility;
+    }
+
 
     private void printHelp() 
     {
