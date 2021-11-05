@@ -111,7 +111,7 @@ public class Game {
         System.out.println(currentRoom.getLongDescription());
     }
 
-    private boolean processCommand(Command command) throws FullHandException {
+    private boolean processCommand(Command command){
         boolean wantToQuit = false;
 
         CommandWord commandWord = command.getCommandWord();
@@ -135,8 +135,13 @@ public class Game {
           //  player.addItemToInventory(); //Mads skal implementere dette. Der er behov for et checkup på grid location.
         } else if (commandWord == CommandWord.USE){
             Item item = player.getInventory().searchItemName(command.getSecondWord());
-                if (player.getItemInHand() == null)
-                    player.addItemToHand(item);
+                if (player.getItemInHand() == null) {
+                    try {
+                        player.addItemToHand(item);
+                    } catch (FullHandException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         else if (commandWord == CommandWord.REMOVE){
             try {
