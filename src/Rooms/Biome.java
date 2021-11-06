@@ -29,7 +29,6 @@ public class Biome extends Room{
         PlasticType[] plasticTypes = PlasticType.values();
 
         for (String s : exitsString) {
-            System.out.println("Placing exit: " + s);
             switch (s) {
                 case "North" :
                     try{
@@ -81,8 +80,6 @@ public class Biome extends Room{
                     break;
             }
         }
-        System.out.println(getGrid()[0][getGridHeight()/2]);
-        //super.printGrid();
 
         while (this.plasticAmount > plasticPlaced) {
             Random random = new Random();

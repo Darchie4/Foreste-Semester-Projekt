@@ -6,6 +6,7 @@ import worldofzuul.Game;
 import worldofzuul.Placeble;
 import worldofzuul.Player;
 
+import java.util.Arrays;
 import java.util.Set;
 import java.util.HashMap;
 
@@ -33,28 +34,34 @@ public class Room implements Placeble{
     public void movePlayer(char direction, int length, Game game) throws IlleaglePlayerMovementException {
         direction = Character.toLowerCase(direction);
         switch (direction){
-            case ('n'):
-                if (playerLocation[0]+direction > getGridHeight()){
+            case ('s'):
+                if (playerLocation[0]+length > getGridHeight()){
+                    System.out.println(Character.toString(direction) + (playerLocation[0]+length) + "Maks er: " + getGridHeight());
+
                     throw new IlleaglePlayerMovementException("Du kan ikke gå uden for kortet");
                 }
-                for (int x = this.playerLocation[0]; x < playerLocation[0]+direction; x++) {
+                for (int x = this.playerLocation[0]; x < playerLocation[0]+length; x++) {
                     if (grid[x][playerLocation[0]] instanceof Room){
                         game.setCurrentRoom((Room) grid[x][playerLocation[1]]);
                         game.getCurrentRoom().getPlayerLocation()[0] = 0;
                         game.getCurrentRoom().getPlayerLocation()[1] = game.getCurrentRoom().getGridWidth()/2;
                         return;
                     }
-                    if (grid[x][playerLocation[0]] != null) {
+                    if (grid[x][playerLocation[0]] != null && !(grid[x][playerLocation[0]] instanceof Player)) {
+                        System.out.println("Der var noget i vejen " + Character.toString(direction));
                         throw new IlleaglePlayerMovementException();
                     }
                 }
-                playerLocation[0] = playerLocation[0]+direction;
-                break;
-            case ('s'):
-                if (playerLocation[0]-direction < 0){
+                playerLocation[0] += length;
+                System.out.println(Arrays.toString(playerLocation));
+                System.out.println("Alt burde have virket " + Character.toString(direction));
+                return;
+            case ('n'):
+                if (playerLocation[0]-length < 0){
+                    System.out.println(Character.toString(direction) + (playerLocation[0]-length));
                     throw new IlleaglePlayerMovementException("Du kan ikke gå uden for kortet");
                 }
-                for (int x = this.playerLocation[0]-direction; x < playerLocation[0]; x++) {
+                for (int x = this.playerLocation[0]-length; x < playerLocation[0]; x++) {
                     if (grid[x][playerLocation[0]] instanceof Room){
                         game.setCurrentRoom((Room) grid[x][playerLocation[1]]);
                         game.getCurrentRoom().getPlayerLocation()[0] = game.getCurrentRoom().getGridHeight()-1;
@@ -62,16 +69,18 @@ public class Room implements Placeble{
                         return;
                     }
                     if (grid[x][playerLocation[0]] != null) {
+                        System.out.println("Der var noget i vejen " + Character.toString(direction));
                         throw new IlleaglePlayerMovementException();
                     }
                 }
-                playerLocation[0] = playerLocation[0]-direction;
-                break;
+                playerLocation[0] -= length;
+                System.out.println("Alt burde have virket" + direction);
+                return;
             case ('e'):
-                if (playerLocation[1]+direction > getGridWidth()){
+                if (playerLocation[1]+length > getGridWidth()){
                     throw new IlleaglePlayerMovementException("Du kan ikke gå uden for kortet");
                 }
-                for (int y = this.playerLocation[1]; y < playerLocation[1]+direction; y++) {
+                for (int y = this.playerLocation[1]; y < playerLocation[1]+length; y++) {
                     if (grid[playerLocation[1]][y] instanceof Room){
                         game.setCurrentRoom((Room) grid[playerLocation[0]][y]);
                         game.getCurrentRoom().getPlayerLocation()[0] = game.getCurrentRoom().getGridHeight()/2;
@@ -82,13 +91,13 @@ public class Room implements Placeble{
                         throw new IlleaglePlayerMovementException();
                     }
                 }
-                playerLocation[1] = playerLocation[1]+direction;
-                break;
+                playerLocation[1] += length;
+                return;
             case ('w'):
-                if (playerLocation[1]-direction < 0){
+                if (playerLocation[1]-length < 0){
                     throw new IlleaglePlayerMovementException("Du kan ikke gå uden for kortet");
                 }
-                for (int y = this.playerLocation[1]-direction; y < playerLocation[1]; y++) {
+                for (int y = this.playerLocation[1]-length; y < playerLocation[1]; y++) {
 
                     if (grid[playerLocation[1]][y] instanceof Room){
                         game.setCurrentRoom((Room) grid[playerLocation[0]][y]);
@@ -100,8 +109,8 @@ public class Room implements Placeble{
                         throw new IlleaglePlayerMovementException();
                     }
                 }
-                playerLocation[1] = playerLocation[1]-direction;
-                break;
+                playerLocation[1] -= length;
+                return;
         }
         throw new IlleaglePlayerMovementException();
     }
