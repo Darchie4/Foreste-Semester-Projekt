@@ -4,6 +4,7 @@ import Exceptions.GridPlaceFull;
 import worldofzuul.Placeble;
 import worldofzuul.Plastic;
 import worldofzuul.PlasticType;
+import worldofzuul.RecervedGridPlace;
 
 import java.util.Random;
 
@@ -33,6 +34,11 @@ public class Biome extends Room{
                 case "North" :
                     try{
                         placeOnGrid(0,getGridHeight()/2,this.getExits().get(this.getDirections().get(s)));
+
+                        placeOnGrid(0, getGridHeight()/2+1,new RecervedGridPlace());
+                        placeOnGrid(0,(getGridHeight()/2)-1,new RecervedGridPlace());
+                        placeOnGrid(1,getGridHeight()/2,new RecervedGridPlace());
+
                     } catch (GridPlaceFull e){
                         System.out.println("Der skete en fejl under generationen af kortet");
                     }
@@ -40,6 +46,11 @@ public class Biome extends Room{
                 case "South" :
                     try {
                         placeOnGrid(getGridWidth()-1,getGridHeight()/2, this.getExits().get(this.getDirections().get(s)));
+
+                        placeOnGrid(getGridWidth()-1, (getGridHeight()/2)+1, new RecervedGridPlace());
+                        placeOnGrid(getGridWidth()-1, (getGridHeight()/2)-1, new RecervedGridPlace());
+                        placeOnGrid(getGridWidth()-2, getGridHeight()/2, new RecervedGridPlace());
+
                     } catch (GridPlaceFull e){
                         System.out.println("Der skete en fejl under generationen af kortet");
                     }
@@ -47,6 +58,11 @@ public class Biome extends Room{
                 case "West" :
                     try {
                         placeOnGrid(getGridWidth()/2, getGridHeight()-1,this.getExits().get(this.getDirections().get(s)));
+
+                        placeOnGrid((getGridWidth()/2)+1, getGridHeight()-1,new RecervedGridPlace());
+                        placeOnGrid((getGridWidth()/2)-1, getGridHeight()-1,new RecervedGridPlace());
+                        placeOnGrid(getGridWidth()/2, getGridHeight()-2,new RecervedGridPlace());
+
                     } catch (GridPlaceFull e){
                         System.out.println("Der skete en fejl under generationen af kortet");
                     }
@@ -54,6 +70,11 @@ public class Biome extends Room{
                 case "East" :
                     try {
                         placeOnGrid(getGridWidth()/2, 0,this.getExits().get(this.getDirections().get(s)));
+
+                        placeOnGrid((getGridWidth()/2)+1,0,new RecervedGridPlace());
+                        placeOnGrid((getGridWidth()/2)-1,0,new RecervedGridPlace());
+                        placeOnGrid(getGridWidth()/2,1,new RecervedGridPlace());
+
                     } catch (GridPlaceFull e){
                         System.out.println("Der skete en fejl under generationen af kortet");
                     }
