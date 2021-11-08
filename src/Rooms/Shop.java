@@ -17,7 +17,7 @@ public class Shop extends Room {
     {
         super(description);
         this.inventory = new Inventory(5);
-        this.inventory.addItem(items);
+        this.inventory.addItemList(items);
     }
 
     public ArrayList<Item> getAllItems() {
@@ -31,8 +31,23 @@ public class Shop extends Room {
             Game.player.subtractPoints(item.getPrice());
             this.inventory.removeItem(item);
         } else {
-            System.out.println("Du har desværre ikke nok point :(");
+            System.out.println("Du har desv\u00E6rre ikke nok point :(");
         }
 
+    }
+
+    public void buyUpgrade(Equipment item) throws FullInventoryException, OutOfPointsException{ //sort out this argument of a method
+        if (Game.player.getPoints() >= (item.getPrice())) { //get price of item
+            for (Item inventoryItem : Game.player.getInventory().getItems()) { // searches for ALL items in inventory
+                if (inventoryItem instanceof Equipment equipment) { //filters for equipment
+                    if (equipment.getId() == 1){ // searches for correct ID: but parses in an item
+
+                        Game.player.subtractPoints(equipment.getPrice()); // finds price of equipment
+                        equipment.upgrade(); //upgrades equipment
+
+                    }
+                }
+            }
+        }
     }
 }

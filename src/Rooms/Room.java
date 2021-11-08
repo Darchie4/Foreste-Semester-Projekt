@@ -192,8 +192,14 @@ public class Room implements Placeble{
         return description + ".\n" + getExitString();
     }
 
+<<<<<<< HEAD
+    private String getExitString()
+    {
+        String returnString = "Steder at tage hen:";
+=======
     private String getExitString() {
         String returnString = "Exits:";
+>>>>>>> 0c40e200b48f17a100dca3460293fed5ec5daa11
         Set<String> keys = exits.keySet();
         for(String exit : keys) {
             returnString += " " + exit;

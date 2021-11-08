@@ -17,6 +17,9 @@ public class Player implements Placeble{
         this.points = 0;
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
     //////////////////////////
     //// Under here is    ////
     //// Points handeling ////

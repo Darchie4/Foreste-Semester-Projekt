@@ -20,6 +20,10 @@ public class Plastic extends Item implements Placeble{
 
     }
 
+<<<<<<< HEAD
+    public PlasticType getType() {
+        return type;
+=======
     @Override
     public char getSymbol() {
         return '<';
@@ -28,5 +32,6 @@ public class Plastic extends Item implements Placeble{
     @Override
     public String toString() {
         return "Plastic{}";
+>>>>>>> 0c40e200b48f17a100dca3460293fed5ec5daa11
     }
 }
