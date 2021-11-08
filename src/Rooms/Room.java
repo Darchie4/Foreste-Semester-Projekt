@@ -1,11 +1,12 @@
 package Rooms;
 
 import Exceptions.GridPlaceFull;
-import Exceptions.IlleaglePlayerMovementException;
+import Exceptions.IllegalPlayerMovementException;
 import worldofzuul.Game;
 import worldofzuul.Placeble;
 import worldofzuul.Player;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.HashMap;
@@ -17,7 +18,6 @@ public class Room implements Placeble{
     private HashMap<String, String> directions;
     private Placeble[][] grid;
     private int[] playerLocation; // playerLocation[0] = x coordinat, playerLocation[1] = y coordinat
-
 
     public Room(String description, int gridWith, int gridHeight) {
         playerLocation = new int[]{0,0};
@@ -31,14 +31,14 @@ public class Room implements Placeble{
         this(description,10,10);
     }
 
-    public void movePlayer(char direction, int length, Game game) throws IlleaglePlayerMovementException {
+    public void movePlayer(char direction, int length, Game game) throws IllegalPlayerMovementException {
         direction = Character.toLowerCase(direction);
         switch (direction){
             case ('s'):
                 if (playerLocation[0]+length > getGridHeight()){
                     System.out.println(Character.toString(direction) + (playerLocation[0]+length) + "Maks er: " + getGridHeight());
 
-                    throw new IlleaglePlayerMovementException("Du kan ikke gå uden for kortet");
+                    throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int x = this.playerLocation[0]; x < playerLocation[0]+length; x++) {
                     if (grid[x][playerLocation[0]] instanceof Room){
@@ -49,7 +49,7 @@ public class Room implements Placeble{
                     }
                     if (grid[x][playerLocation[0]] != null && !(grid[x][playerLocation[0]] instanceof Player)) {
                         System.out.println("Der var noget i vejen " + Character.toString(direction));
-                        throw new IlleaglePlayerMovementException();
+                        throw new IllegalPlayerMovementException();
                     }
                 }
                 playerLocation[0] += length;
@@ -59,7 +59,7 @@ public class Room implements Placeble{
             case ('n'):
                 if (playerLocation[0]-length < 0){
                     System.out.println(Character.toString(direction) + (playerLocation[0]-length));
-                    throw new IlleaglePlayerMovementException("Du kan ikke gå uden for kortet");
+                    throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int x = this.playerLocation[0]-length; x < playerLocation[0]; x++) {
                     if (grid[x][playerLocation[0]] instanceof Room){
@@ -70,7 +70,7 @@ public class Room implements Placeble{
                     }
                     if (grid[x][playerLocation[0]] != null) {
                         System.out.println("Der var noget i vejen " + Character.toString(direction));
-                        throw new IlleaglePlayerMovementException();
+                        throw new IllegalPlayerMovementException();
                     }
                 }
                 playerLocation[0] -= length;
@@ -78,7 +78,7 @@ public class Room implements Placeble{
                 return;
             case ('e'):
                 if (playerLocation[1]+length > getGridWidth()){
-                    throw new IlleaglePlayerMovementException("Du kan ikke gå uden for kortet");
+                    throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int y = this.playerLocation[1]; y < playerLocation[1]+length; y++) {
                     if (grid[playerLocation[1]][y] instanceof Room){
@@ -88,14 +88,14 @@ public class Room implements Placeble{
                         return;
                     }
                     if (grid[playerLocation[1]][y] != null) {
-                        throw new IlleaglePlayerMovementException();
+                        throw new IllegalPlayerMovementException();
                     }
                 }
                 playerLocation[1] += length;
                 return;
             case ('w'):
                 if (playerLocation[1]-length < 0){
-                    throw new IlleaglePlayerMovementException("Du kan ikke gå uden for kortet");
+                    throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int y = this.playerLocation[1]-length; y < playerLocation[1]; y++) {
 
@@ -106,13 +106,13 @@ public class Room implements Placeble{
                         return;
                     }
                     if (grid[playerLocation[1]][y] != null) {
-                        throw new IlleaglePlayerMovementException();
+                        throw new IllegalPlayerMovementException();
                     }
                 }
                 playerLocation[1] -= length;
                 return;
         }
-        throw new IlleaglePlayerMovementException();
+        throw new IllegalPlayerMovementException();
     }
 
 
@@ -139,14 +139,31 @@ public class Room implements Placeble{
 
     public void printGrid(Player player){
         Placeble[][] printGrid = grid.clone();
-        printGrid[playerLocation[0]][playerLocation[1]] = (Placeble) player;
+        printGrid[playerLocation[0]][playerLocation[1]] = player;
         String horisontalLine = "";
         for (int i = 0; i < getGridWidth()*2+1; i++) {
             horisontalLine += "━" ;
         }
-
+        ArrayList<Character> printArray = new ArrayList<>();
         System.out.println("┍" + horisontalLine + "┑");
-        for (Placeble[] placebles : grid) {
+
+        for (Placeble[] placebles : printGrid) {
+            printArray.add('|');
+            for (Placeble placeble : placebles) {
+                if (placeble == null) {
+                    System.out.print(" /");
+                }else {
+                    System.out.print(" " + placeble.getSymbol());
+                }
+            }
+            System.out.println(" |");
+        }
+        System.out.println("┕" + horisontalLine + "┙");
+        printGrid[playerLocation[0]][playerLocation[1]] = null;
+    }
+
+        /*
+        for (Placeble[] placebles : printGrid) {
             System.out.print("|");
             for (Placeble placeble : placebles) {
                 if (placeble == null) {
@@ -159,6 +176,8 @@ public class Room implements Placeble{
         }
         System.out.println("┕" + horisontalLine + "┙");
     }
+
+         */
 
     public void setExit(String direction, String place, Room neighbor) {
         directions.put(direction,place);

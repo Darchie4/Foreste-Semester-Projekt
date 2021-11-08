@@ -1,6 +1,6 @@
 package worldofzuul;
 
-import Exceptions.IlleaglePlayerMovementException;
+import Exceptions.IllegalPlayerMovementException;
 import Rooms.Biome;
 import Rooms.Room;
 
@@ -18,14 +18,20 @@ public class TestMain {
         room.generateGrid();
         room.printGrid(player);
         try{
-            room.movePlayer('n', 1, game);
-        } catch (IlleaglePlayerMovementException e){
-            System.out.println("Du er dum\n" + e);
+            room.movePlayer('s', 2, game);
+        } catch (IllegalPlayerMovementException e){
+            System.out.println("Du er dum2\n" + e);
+        }
+        room.printGrid(player);
+        try{
+            room.movePlayer('e', 1, game);
+        } catch (IllegalPlayerMovementException e){
+            System.out.println("Du er dum2\n" + e);
         }
         try{
-            room.movePlayer('s', 3, game);
-        } catch (IlleaglePlayerMovementException e){
-            System.out.println("Du er dum2\n" + e);
+            room.movePlayer('w', 1, game);
+        } catch (IllegalPlayerMovementException e){
+            System.out.println("Du er dum3\n" + e);
         }
         System.out.println(Arrays.toString(game.getCurrentRoom().getPlayerLocation()));
         room.printGrid(player);
