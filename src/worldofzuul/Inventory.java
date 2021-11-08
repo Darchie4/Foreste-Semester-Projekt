@@ -31,7 +31,7 @@ public class Inventory {
             if (item.getName().equals(itemName))
                 return item;
         }
-        System.out.println("Det har du ikke på dig");
+        System.out.println("Det har du ikke p\u00E5 dig");
         return null;
     }
 

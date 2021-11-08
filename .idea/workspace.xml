@@ -7,6 +7,7 @@
     <list default="true" id="4011a504-882d-4f33-a0f7-c9e7aefe20b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/Exceptions/EmptyHandException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/EmptyHandException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Exceptions/FullHandException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/FullHandException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Rooms/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Shop.java" afterDir="false" />
@@ -20,6 +21,11 @@
       <change beforePath="$PROJECT_DIR$/src/Rooms/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/TestMain.java" afterDir="false" />
 >>>>>>> 0c40e200b48f17a100dca3460293fed5ec5daa11
+=======
+      <change beforePath="$PROJECT_DIR$/src/Rooms/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Shop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" afterDir="false" />
+>>>>>>> 86a7ae5b85dc6d365424e38146160b5fe5acfc8f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
