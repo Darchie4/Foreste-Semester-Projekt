@@ -25,39 +25,51 @@ public class Game {
         Room home, map;
         map = new Room("du kigger på kortet");
         home = new Room("Du er nu derhjemme");
-        home.setExit("kort", map);
+        home.setExit("South-West","kort", map);
 
         // facility creation
 
         FacilityRoom facility = new FacilityRoom("Du er nu på genbrugsstationen");
         createFacilities(facility);
-        facility.setExit("hjem", home);
+        facility.setExit("East","hjem", home);
 
         // shop creation
         Shop shop = createShop();
-        shop.setExit("hjem", home);
+        shop.setExit("North","Hjem", home);
 
         // biome creation
         Biome forest, playground, park, beach;
-        playground = new Biome("du er tager over til legepladsen", 10);
-        playground.setExit("hjem", home);
 
-        forest = new Biome("du er på tur i skoven", 15);
-        forest.setExit("hjem", home);
+        playground = new Biome("du er tager over til legepladsen", 10, 6,6);
+        park = new Biome("du er på tur i parken", 20,10,10);
+        playground.setExit("South","Hjem", home);
+        playground.setExit("North","Parken", park);
 
-        park = new Biome("du er på tur i parken", 20);
-        park.setExit("hjem", home);
+        park.setExit("South","Legepladsen", playground);
 
-        beach = new Biome("du er taget til stranden", 25);
-        beach.setExit("hjem", home);
+        forest = new Biome("du er på tur i skoven", 15,8,8);
+        beach = new Biome("du er taget til stranden", 25,12,12);
+        forest.setExit("West","Hjem", home);
+        forest.setExit("East","Starnd", beach);
+        beach.setExit("West","hjem", home);
 
-        map.setExit("Legepladsen", playground);
-        map.setExit("Parken", park);
-        map.setExit("Skoven", forest);
-        map.setExit("Stranden",beach);
-        map.setExit("Genbrugsstationen",facility);
-        map.setExit("Butikken", shop);
-        map.setExit("Hjem", home);
+
+        map.setExit("North","Legepladsen", playground);
+        map.setExit("South","Parken", park);
+        map.setExit("East","Skoven", forest);
+        map.setExit("West","Stranden",beach);
+        map.setExit("North-East","Genbrugsstationen",facility);
+        map.setExit("North-west","Butikken", shop);
+        map.setExit("North-south","Hjem", home);
+
+        home.generateGrid();
+        shop.generateGrid();
+        facility.generateGrid();
+        forest.generateGrid();
+        beach.generateGrid();
+        playground.generateGrid();
+        park.generateGrid();
+
 
 
         currentRoom = home;
@@ -238,5 +250,13 @@ public class Game {
         else {
             return true;
         }
+    }
+
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
     }
 }

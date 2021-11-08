@@ -2,7 +2,7 @@ package worldofzuul;
 
 import Exceptions.*;
 
-public class Player {
+public class Player implements Placeble{
     private Inventory inventory;
     private Item itemInHand;
     private int energy;
@@ -150,4 +150,10 @@ public class Player {
     //// Nono don't touch me there ////
     //// This is my nono square    ////
     ///////////////////////////////////
+
+
+    @Override
+    public char getSymbol() {
+        return '\uDC64';
+    }
 }
