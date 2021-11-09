@@ -2,7 +2,7 @@ package worldofzuul;
 
 import Exceptions.*;
 
-public class Player implements Placeble{
+public class Player implements Drawable {
     private Inventory inventory;
     private Item itemInHand;
     private int energy;

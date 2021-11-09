@@ -3,7 +3,7 @@ package Rooms;
 import Exceptions.GridPlaceFull;
 import Exceptions.IllegalPlayerMovementException;
 import worldofzuul.Game;
-import worldofzuul.Placeble;
+import worldofzuul.Drawable;
 import worldofzuul.Player;
 
 import java.util.ArrayList;
@@ -12,11 +12,11 @@ import java.util.Set;
 import java.util.HashMap;
 
 
-public class Room implements Placeble {
+public class Room implements Drawable {
     private String description;
     private HashMap<String, Room> exits;
     private HashMap<String, String> directions;
-    private Placeble[][] grid;
+    private Drawable[][] grid;
     private int[] playerLocation; // playerLocation[0] = x coordinat, playerLocation[1] = y coordinat
 
     public Room(String description, int gridWith, int gridHeight) {
@@ -24,7 +24,7 @@ public class Room implements Placeble {
         this.description = description;
         exits = new HashMap<String, Room>();
         directions = new HashMap<String, String>();
-        this.grid = new Placeble[gridWith][gridHeight];
+        this.grid = new Drawable[gridWith][gridHeight];
     }
 
     public Room(String description) {
@@ -36,60 +36,40 @@ public class Room implements Placeble {
         switch (direction) {
             case ('s'):
                 if (playerLocation[0] + length > getGridHeight()) {
-                    System.out.println(Character.toString(direction) + (playerLocation[0] + length) + "Maks er: " + getGridHeight());
-
                     throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int x = this.playerLocation[0]; x < playerLocation[0] + length; x++) {
-                    if (grid[x][playerLocation[0]] instanceof Room) {
-                        game.setCurrentRoom((Room) grid[x][playerLocation[1]]);
-                        game.getCurrentRoom().getPlayerLocation()[0] = 0;
-                        game.getCurrentRoom().getPlayerLocation()[1] = game.getCurrentRoom().getGridWidth() / 2;
+                    if (isRoom(grid[x][playerLocation[0]])) {
+                        movePlayerToNewRoom(game, grid[x][playerLocation[1]], 0, game.getCurrentRoom().getGridWidth() / 2);
                         return;
                     }
-                    if (grid[x][playerLocation[0]] != null && !(grid[x][playerLocation[0]] instanceof Player)) {
-                        System.out.println("Der var noget i vejen " + Character.toString(direction));
-                        throw new IllegalPlayerMovementException();
-                    }
+                    testIfThingsIsInTheWayX(x);
                 }
                 playerLocation[0] += length;
-                System.out.println(Arrays.toString(playerLocation));
-                System.out.println("Alt burde have virket " + Character.toString(direction));
                 return;
             case ('n'):
                 if (playerLocation[0] - length < 0) {
-                    System.out.println(Character.toString(direction) + (playerLocation[0] - length));
                     throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int x = this.playerLocation[0] - length; x < playerLocation[0]; x++) {
-                    if (grid[x][playerLocation[0]] instanceof Room) {
-                        game.setCurrentRoom((Room) grid[x][playerLocation[1]]);
-                        game.getCurrentRoom().getPlayerLocation()[0] = game.getCurrentRoom().getGridHeight() - 1;
-                        game.getCurrentRoom().getPlayerLocation()[1] = game.getCurrentRoom().getGridWidth() / 2;
+                    if (isRoom(grid[x][playerLocation[0]])) {
+                        movePlayerToNewRoom(game, grid[x][playerLocation[1]], getCurrentRoomHeight(game) - 1, getCurrentRoomWidth(game) / 2);
                         return;
                     }
-                    if (grid[x][playerLocation[0]] != null) {
-                        System.out.println("Der var noget i vejen " + Character.toString(direction));
-                        throw new IllegalPlayerMovementException();
-                    }
+                    testIfThingsIsInTheWayX(x);
                 }
                 playerLocation[0] -= length;
-                System.out.println("Alt burde have virket" + direction);
                 return;
             case ('e'):
                 if (playerLocation[1] + length > getGridWidth()) {
                     throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int y = this.playerLocation[1]; y < playerLocation[1] + length; y++) {
-                    if (grid[playerLocation[1]][y] instanceof Room) {
-                        game.setCurrentRoom((Room) grid[playerLocation[0]][y]);
-                        game.getCurrentRoom().getPlayerLocation()[0] = game.getCurrentRoom().getGridHeight() / 2;
-                        game.getCurrentRoom().getPlayerLocation()[1] = 0;
+                    if (isRoom(grid[playerLocation[1]][y])) {
+                        movePlayerToNewRoom(game, grid[playerLocation[0]][y], getCurrentRoomHeight(game) / 2, 0);
                         return;
                     }
-                    if (grid[playerLocation[1]][y] != null) {
-                        throw new IllegalPlayerMovementException();
-                    }
+                    testIfThingsIsInTheWayY(y);
                 }
                 playerLocation[1] += length;
                 return;
@@ -98,16 +78,11 @@ public class Room implements Placeble {
                     throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int y = this.playerLocation[1] - length; y < playerLocation[1]; y++) {
-
-                    if (grid[playerLocation[1]][y] instanceof Room) {
-                        game.setCurrentRoom((Room) grid[playerLocation[0]][y]);
-                        game.getCurrentRoom().getPlayerLocation()[0] = game.getCurrentRoom().getGridHeight() / 2;
-                        game.getCurrentRoom().getPlayerLocation()[1] = game.getCurrentRoom().getGridWidth() - 1;
+                    if (isRoom(grid[playerLocation[1]][y])) {
+                        movePlayerToNewRoom(game, grid[playerLocation[0]][y], getCurrentRoomHeight(game)/ 2, getCurrentRoomWidth(game)- 1);
                         return;
                     }
-                    if (grid[playerLocation[1]][y] != null) {
-                        throw new IllegalPlayerMovementException();
-                    }
+                    testIfThingsIsInTheWayY(y);
                 }
                 playerLocation[1] -= length;
                 return;
@@ -115,6 +90,34 @@ public class Room implements Placeble {
         throw new IllegalPlayerMovementException();
     }
 
+    private void testIfThingsIsInTheWayX(int x) throws IllegalPlayerMovementException{
+        if (grid[x][playerLocation[1]] != null && !(grid[x][playerLocation[1]] instanceof Player)) {
+            throw new IllegalPlayerMovementException();
+        }
+    }
+
+    private void testIfThingsIsInTheWayY(int y) throws IllegalPlayerMovementException{
+        if (grid[playerLocation[0]][y] != null && !(grid[playerLocation[0]][y] instanceof Player)) {
+            throw new IllegalPlayerMovementException();
+        }
+    }
+
+    private boolean isRoom(Drawable object){
+        return object instanceof Room;
+    }
+
+    private void movePlayerToNewRoom(Game game, Drawable newRoom, int x, int y){
+        game.setCurrentRoom((Room) newRoom);
+        game.getCurrentRoom().getPlayerLocation()[0] = x;
+        game.getCurrentRoom().getPlayerLocation()[1] = y;
+    }
+
+    private int getCurrentRoomHeight(Game game){
+        return game.getCurrentRoom().getGridHeight();
+    }
+    private int getCurrentRoomWidth(Game game){
+        return game.getCurrentRoom().getGridWidth();
+    }
 
     public void generateGrid() {
         String exitsString[] = this.directions.keySet().toArray(new String[0]);
@@ -132,13 +135,12 @@ public class Room implements Placeble {
                 case "East":
                     grid[getGridWidth() / 2][0] = this.exits.get(s);
                     break;
-
             }
         }
     }
 
     public void printGrid(Player player) {
-        Placeble[][] printGrid = grid.clone();
+        Drawable[][] printGrid = grid.clone();
         printGrid[playerLocation[0]][playerLocation[1]] = player;
         String horisontalLine = "";
         for (int i = 0; i < getGridWidth() * 2 + 1; i++) {
@@ -147,13 +149,13 @@ public class Room implements Placeble {
         ArrayList<Character> printArray = new ArrayList<>();
         System.out.println("┍" + horisontalLine + "┑");
 
-        for (Placeble[] placebles : printGrid) {
+        for (Drawable[] drawables : printGrid) {
             printArray.add('|');
-            for (Placeble placeble : placebles) {
-                if (placeble == null) {
+            for (Drawable drawable : drawables) {
+                if (drawable == null) {
                     System.out.print(" /");
                 } else {
-                    System.out.print(" " + placeble.getSymbol());
+                    System.out.print(" " + drawable.getSymbol());
                 }
             }
             System.out.println(" |");
@@ -161,23 +163,6 @@ public class Room implements Placeble {
         System.out.println("┕" + horisontalLine + "┙");
         printGrid[playerLocation[0]][playerLocation[1]] = null;
     }
-
-        /*
-        for (Placeble[] placebles : printGrid) {
-            System.out.print("|");
-            for (Placeble placeble : placebles) {
-                if (placeble == null) {
-                    System.out.print(" /");
-                }else {
-                    System.out.print(" " + placeble.getSymbol());
-                }
-            }
-            System.out.println(" |");
-        }
-        System.out.println("┕" + horisontalLine + "┙");
-    }
-
-         */
 
     public void setExit(String direction, String place, Room neighbor) {
         directions.put(direction, place);
@@ -206,7 +191,7 @@ public class Room implements Placeble {
             return exits.get(direction);
         }
 
-        public Placeble[][] getGrid () {
+        public Drawable[][] getGrid () {
             return grid;
         }
 
@@ -235,7 +220,7 @@ public class Room implements Placeble {
             return playerLocation;
         }
 
-        public void placeOnGrid ( int x, int y, Placeble item) throws GridPlaceFull {
+        public void placeOnGrid ( int x, int y, Drawable item) throws GridPlaceFull {
             if (grid[x][y] != null) {
                 throw new GridPlaceFull();
             }

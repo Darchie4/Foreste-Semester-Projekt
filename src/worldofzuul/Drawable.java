@@ -1,5 +1,5 @@
 package worldofzuul;
 
-public interface Placeble {
+public interface Drawable {
     public abstract char getSymbol();
 }

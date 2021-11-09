@@ -167,13 +167,13 @@ public class Game {
             }
         } else if (commandWord == CommandWord.RECYCLE){
             if (currentRoom instanceof FacilityRoom room) {
-                ArrayList<Plastic> foundPlastic;
+                Plastic foundPlastic;
                 Facility chosenFacility;
                 String plasticType = command.getSecondWord();
 
                 foundPlastic = getPlasticFromInventory(plasticType);
                 chosenFacility = selectFacility(room);
-                chosenFacility.use(foundPlastic);
+                chosenFacility.use(foundPlastic.getPlasticType());
             }
         }
         return wantToQuit;
@@ -192,11 +192,13 @@ public class Game {
             }
         }
     }
-    private PlasticType getPlasticFromInventory(String chosenType){
+    private Plastic getPlasticFromInventory(String chosenType){
         for (Item item: player.getInventory().getItems()) {
-            if (item instanceof Plastic plastic && plastic.getName().equals(chosenType))
-                return plastic.getName();
+            if (item instanceof Plastic plastic && plastic.getPlasticType().getName().equals(chosenType))
+                return plastic;
         }
+        System.out.println("Du har desværre intet " + chosenType + " på dig");
+        return null;
     }
     private Facility selectFacility(FacilityRoom room){
         System.out.println("Hvor vil du gerne sortere dit plastik?");

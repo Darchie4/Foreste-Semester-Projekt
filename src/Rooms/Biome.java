@@ -1,8 +1,6 @@
 package Rooms;
 
 import Exceptions.GridPlaceFull;
-import worldofzuul.Placeble;
-import worldofzuul.Plastic;
 import worldofzuul.PlasticType;
 import worldofzuul.RecervedGridPlace;
 
