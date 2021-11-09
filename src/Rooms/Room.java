@@ -36,55 +36,41 @@ public class Room implements Drawable {
         switch (direction) {
             case ('s'):
                 if (playerLocation[0] + length > getGridHeight()) {
-                    System.out.println(Character.toString(direction) + (playerLocation[0] + length) + "Maks er: " + getGridHeight());
-
                     throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int x = this.playerLocation[0]; x < playerLocation[0] + length; x++) {
-                    if (grid[x][playerLocation[0]] instanceof Room) {
-                        game.setCurrentRoom((Room) grid[x][playerLocation[1]]);
-                        game.getCurrentRoom().getPlayerLocation()[0] = 0;
-                        game.getCurrentRoom().getPlayerLocation()[1] = game.getCurrentRoom().getGridWidth() / 2;
+                    if (isRoom(grid[x][playerLocation[0]])) {
+                        movePlayerToNewRoom(game, grid[x][playerLocation[1]], 0, game.getCurrentRoom().getGridWidth() / 2);
                         return;
                     }
                     if (grid[x][playerLocation[0]] != null && !(grid[x][playerLocation[0]] instanceof Player)) {
-                        System.out.println("Der var noget i vejen " + Character.toString(direction));
                         throw new IllegalPlayerMovementException();
                     }
                 }
                 playerLocation[0] += length;
-                System.out.println(Arrays.toString(playerLocation));
-                System.out.println("Alt burde have virket " + Character.toString(direction));
                 return;
             case ('n'):
                 if (playerLocation[0] - length < 0) {
-                    System.out.println(Character.toString(direction) + (playerLocation[0] - length));
                     throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int x = this.playerLocation[0] - length; x < playerLocation[0]; x++) {
-                    if (grid[x][playerLocation[0]] instanceof Room) {
-                        game.setCurrentRoom((Room) grid[x][playerLocation[1]]);
-                        game.getCurrentRoom().getPlayerLocation()[0] = game.getCurrentRoom().getGridHeight() - 1;
-                        game.getCurrentRoom().getPlayerLocation()[1] = game.getCurrentRoom().getGridWidth() / 2;
+                    if (isRoom(grid[x][playerLocation[0]])) {
+                        movePlayerToNewRoom(game, grid[x][playerLocation[1]], getCurrentRoomHeight(game) - 1, getCurrentRoomWidth(game) / 2);
                         return;
                     }
                     if (grid[x][playerLocation[0]] != null) {
-                        System.out.println("Der var noget i vejen " + Character.toString(direction));
                         throw new IllegalPlayerMovementException();
                     }
                 }
                 playerLocation[0] -= length;
-                System.out.println("Alt burde have virket" + direction);
                 return;
             case ('e'):
                 if (playerLocation[1] + length > getGridWidth()) {
                     throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int y = this.playerLocation[1]; y < playerLocation[1] + length; y++) {
-                    if (grid[playerLocation[1]][y] instanceof Room) {
-                        game.setCurrentRoom((Room) grid[playerLocation[0]][y]);
-                        game.getCurrentRoom().getPlayerLocation()[0] = game.getCurrentRoom().getGridHeight() / 2;
-                        game.getCurrentRoom().getPlayerLocation()[1] = 0;
+                    if (isRoom(grid[playerLocation[1]][y])) {
+                        movePlayerToNewRoom(game, grid[playerLocation[0]][y], getCurrentRoomHeight(game) / 2, 0);
                         return;
                     }
                     if (grid[playerLocation[1]][y] != null) {
@@ -98,11 +84,8 @@ public class Room implements Drawable {
                     throw new IllegalPlayerMovementException("Du kan ikke gå uden for kortet");
                 }
                 for (int y = this.playerLocation[1] - length; y < playerLocation[1]; y++) {
-
-                    if (grid[playerLocation[1]][y] instanceof Room) {
-                        game.setCurrentRoom((Room) grid[playerLocation[0]][y]);
-                        game.getCurrentRoom().getPlayerLocation()[0] = game.getCurrentRoom().getGridHeight() / 2;
-                        game.getCurrentRoom().getPlayerLocation()[1] = game.getCurrentRoom().getGridWidth() - 1;
+                    if (isRoom(grid[playerLocation[1]][y])) {
+                        movePlayerToNewRoom(game, grid[playerLocation[0]][y], getCurrentRoomHeight(game)/ 2, getCurrentRoomWidth(game)- 1);
                         return;
                     }
                     if (grid[playerLocation[1]][y] != null) {
@@ -115,6 +98,22 @@ public class Room implements Drawable {
         throw new IllegalPlayerMovementException();
     }
 
+    private boolean isRoom(Drawable object){
+        return object instanceof Room;
+    }
+
+    private void movePlayerToNewRoom(Game game, Drawable newRoom, int x, int y){
+        game.setCurrentRoom((Room) newRoom);
+        game.getCurrentRoom().getPlayerLocation()[0] = x;
+        game.getCurrentRoom().getPlayerLocation()[1] = y;
+    }
+
+    private int getCurrentRoomHeight(Game game){
+        return game.getCurrentRoom().getGridHeight();
+    }
+    private int getCurrentRoomWidth(Game game){
+        return game.getCurrentRoom().getGridWidth();
+    }
 
     public void generateGrid() {
         String exitsString[] = this.directions.keySet().toArray(new String[0]);
@@ -160,23 +159,6 @@ public class Room implements Drawable {
         System.out.println("┕" + horisontalLine + "┙");
         printGrid[playerLocation[0]][playerLocation[1]] = null;
     }
-
-        /*
-        for (Placeble[] placebles : printGrid) {
-            System.out.print("|");
-            for (Placeble placeble : placebles) {
-                if (placeble == null) {
-                    System.out.print(" /");
-                }else {
-                    System.out.print(" " + placeble.getSymbol());
-                }
-            }
-            System.out.println(" |");
-        }
-        System.out.println("┕" + horisontalLine + "┙");
-    }
-
-         */
 
     public void setExit(String direction, String place, Room neighbor) {
         directions.put(direction, place);

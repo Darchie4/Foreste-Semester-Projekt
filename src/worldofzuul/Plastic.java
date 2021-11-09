@@ -38,9 +38,6 @@ public class Plastic extends Item implements Drawable{
     public PlasticType getPlasticType() {
         return this.plasticType;
     }
-    public Plastic getSymbol{
-
-    }
 
     public static Plastic plasticFactory(PlasticType plasticType){
         switch(plasticType){
