@@ -214,6 +214,7 @@ public class Game {
         System.out.println(currentRoom.getShortDescription() + "\n");
         System.out.println("Dette kan du g\u00F8re:");
         parser.showCommands();
+
     }
 
     private void goRoom(Command command) {
