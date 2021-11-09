@@ -43,9 +43,7 @@ public class Room implements Drawable {
                         movePlayerToNewRoom(game, grid[x][playerLocation[1]], 0, game.getCurrentRoom().getGridWidth() / 2);
                         return;
                     }
-                    if (grid[x][playerLocation[0]] != null && !(grid[x][playerLocation[0]] instanceof Player)) {
-                        throw new IllegalPlayerMovementException();
-                    }
+                    testIfThingsIsInTheWayX(x);
                 }
                 playerLocation[0] += length;
                 return;
@@ -58,9 +56,7 @@ public class Room implements Drawable {
                         movePlayerToNewRoom(game, grid[x][playerLocation[1]], getCurrentRoomHeight(game) - 1, getCurrentRoomWidth(game) / 2);
                         return;
                     }
-                    if (grid[x][playerLocation[0]] != null) {
-                        throw new IllegalPlayerMovementException();
-                    }
+                    testIfThingsIsInTheWayX(x);
                 }
                 playerLocation[0] -= length;
                 return;
@@ -73,9 +69,7 @@ public class Room implements Drawable {
                         movePlayerToNewRoom(game, grid[playerLocation[0]][y], getCurrentRoomHeight(game) / 2, 0);
                         return;
                     }
-                    if (grid[playerLocation[1]][y] != null) {
-                        throw new IllegalPlayerMovementException();
-                    }
+                    testIfThingsIsInTheWayY(y);
                 }
                 playerLocation[1] += length;
                 return;
@@ -88,14 +82,24 @@ public class Room implements Drawable {
                         movePlayerToNewRoom(game, grid[playerLocation[0]][y], getCurrentRoomHeight(game)/ 2, getCurrentRoomWidth(game)- 1);
                         return;
                     }
-                    if (grid[playerLocation[1]][y] != null) {
-                        throw new IllegalPlayerMovementException();
-                    }
+                    testIfThingsIsInTheWayY(y);
                 }
                 playerLocation[1] -= length;
                 return;
         }
         throw new IllegalPlayerMovementException();
+    }
+
+    private void testIfThingsIsInTheWayX(int x) throws IllegalPlayerMovementException{
+        if (grid[x][playerLocation[1]] != null && !(grid[x][playerLocation[1]] instanceof Player)) {
+            throw new IllegalPlayerMovementException();
+        }
+    }
+
+    private void testIfThingsIsInTheWayY(int y) throws IllegalPlayerMovementException{
+        if (grid[playerLocation[0]][y] != null && !(grid[playerLocation[0]][y] instanceof Player)) {
+            throw new IllegalPlayerMovementException();
+        }
     }
 
     private boolean isRoom(Drawable object){
