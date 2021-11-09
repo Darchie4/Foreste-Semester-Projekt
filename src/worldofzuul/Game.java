@@ -39,20 +39,17 @@ public class Game {
         // biome creation
         Biome forest, playground, park, beach;
 
-<<<<<<< HEAD
         playground = new Biome("du er tager over til legepladsen", 10, 6,6);
         park = new Biome("du er på tur i parken", 20,10,10);
         playground.setExit("South","Hjem", home);
         playground.setExit("North","Parken", park);
 
         park.setExit("South","Legepladsen", playground);
-=======
-        forest = new Biome("du er p\u00E5 tur i skoven", 15);
-        forest.setExit("hjem", home);
+        forest = new Biome("du er p\u00E5 tur i skoven", 15, 8,8);
+        forest.setExit("west","hjem", home);
 
-        park = new Biome("du er p\u00E5 tur i parken", 20);
-        park.setExit("hjem", home);
->>>>>>> 86a7ae5b85dc6d365424e38146160b5fe5acfc8f
+        park = new Biome("du er p\u00E5 tur i parken", 20, 10, 10);
+        park.setExit("south", "legeplads", home);
 
         forest = new Biome("du er på tur i skoven", 15,8,8);
         beach = new Biome("du er taget til stranden", 25,12,12);
@@ -171,14 +168,12 @@ public class Game {
         } else if (commandWord == CommandWord.RECYCLE){
             if (currentRoom instanceof FacilityRoom room) {
                 ArrayList<Plastic> foundPlastic;
-                Plastic plastic;
                 Facility chosenFacility;
-
                 String plasticType = command.getSecondWord();
-                foundPlastic = getPlasticFromInventory();
-                plastic = filterPlastic(plasticType, foundPlastic);
+
+                foundPlastic = getPlasticFromInventory(plasticType);
                 chosenFacility = selectFacility(room);
-                chosenFacility.use(plastic.getType());
+                chosenFacility.use(foundPlastic);
             }
         }
         return wantToQuit;
@@ -197,29 +192,18 @@ public class Game {
             }
         }
     }
-    private ArrayList<Plastic> getPlasticFromInventory(){
-        ArrayList<Plastic> plasticFound = new ArrayList<Plastic>();
+    private PlasticType getPlasticFromInventory(String chosenType){
         for (Item item: player.getInventory().getItems()) {
-            if (item instanceof Plastic plastic)
-                plasticFound.add(plastic);
+            if (item instanceof Plastic plastic && plastic.getName().equals(chosenType))
+                return plastic.getName();
         }
-        return plasticFound;
-    }
-    private Plastic filterPlastic(String plasticType, ArrayList<Plastic> plasticCollection){
-        for (Plastic plastic: plasticCollection) {
-            if (plastic.getType().toString().equals(plasticType))
-                return plastic;
-        }
-        System.out.println("Du har intet plastik af den type");
-        return null;
     }
     private Facility selectFacility(FacilityRoom room){
         System.out.println("Hvor vil du gerne sortere dit plastik?");
         System.out.println("> h\u00E5rd plastikcontainer \n> bl\u00F8d plastikcontainer \n> pantautomat \n");
         Command command = parser.getCommand();
         String location = command.getCommandWord().toString().toLowerCase();
-        Facility chosenFacility = room.getFacilities().get(location);
-        return chosenFacility;
+        return room.getFacilities().get(location);
     }
 
 

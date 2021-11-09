@@ -1,6 +1,6 @@
 package Exceptions;
 
-public class FullInventoryException extends IlleagleItemMovementException{
+public class FullInventoryException extends Exception {
     public FullInventoryException() {
         super("The inventory is full");
     }
