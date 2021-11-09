@@ -4,28 +4,35 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4011a504-882d-4f33-a0f7-c9e7aefe20b9" name="Changes" comment="">
+    <list default="true" id="2d356aba-2cd1-484e-9d6b-8e964d8d8c01" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Exceptions/EmptyHandException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/Exceptions/EmptyHandException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Exceptions/FullHandException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/Exceptions/FullHandException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Exceptions/FullInventoryException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Exceptions/GridPlaceFull.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/Exceptions/GridPlaceFull.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Exceptions/IlleagleItemMovementException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Facility.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Rooms/FacilityRoom.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Home.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Shop.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Equipment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Inventory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Plastic.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/PlasticType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Player.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Exceptions/EmptyHandException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/EmptyHandException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Exceptions/FullHandException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/FullHandException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rooms/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Shop.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Player.java" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Room.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/TestMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/TestMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exceptions/IlleaglePlayerMovementException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/IllegalPlayerMovementException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exceptions/FullInventoryException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/FullInventoryException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exceptions/GridPlaceFull.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exceptions/GridPlaceFull.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exceptions/IlleagleItemMovementException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Rooms/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/TestMain.java" afterDir="false" />
->>>>>>> 0c40e200b48f17a100dca3460293fed5ec5daa11
-=======
       <change beforePath="$PROJECT_DIR$/src/Rooms/Shop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Shop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Inventory.java" afterDir="false" />
->>>>>>> 86a7ae5b85dc6d365424e38146160b5fe5acfc8f
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/PlasticType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/PlasticType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +42,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="20d7Ecj8aG4bAvy12NpfmnIcvij" />
+  <component name="ProjectId" id="20e6RuJljUngurhgkHp4AD4CJc7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -72,35 +82,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4011a504-882d-4f33-a0f7-c9e7aefe20b9" name="Changes" comment="" />
-      <created>1636362501853</created>
+      <changelist id="2d356aba-2cd1-484e-9d6b-8e964d8d8c01" name="Changes" comment="" />
+      <created>1636392707702</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-<<<<<<< HEAD
-      <updated>1635844174368</updated>
-      <workItem from="1635844176631" duration="66000" />
-      <workItem from="1635844255893" duration="1778000" />
-      <workItem from="1635937726805" duration="330000" />
-      <workItem from="1635851105623" duration="13229000" />
-      <workItem from="1635931031372" duration="61000" />
-      <workItem from="1635937642817" duration="1112000" />
-      <workItem from="1635851105623" duration="18979000" />
-      <workItem from="1635940591444" duration="2968000" />
-      <workItem from="1635945507760" duration="108000" />
-      <workItem from="1635975009713" duration="602000" />
-      <workItem from="1636052447846" duration="1231000" />
-      <workItem from="1636102156624" duration="4369000" />
-      <workItem from="1636107183749" duration="6307000" />
-      <workItem from="1636117166009" duration="41000" />
-      <workItem from="1636117313750" duration="313000" />
-      <workItem from="1636118195181" duration="97000" />
-      <workItem from="1636118387091" duration="949000" />
-      <workItem from="1636126981964" duration="531000" />
-      <workItem from="1636129010113" duration="803000" />
-=======
-      <updated>1636362501853</updated>
-      <workItem from="1636362511903" duration="2639000" />
->>>>>>> 0c40e200b48f17a100dca3460293fed5ec5daa11
+      <updated>1636392707702</updated>
+      <workItem from="1636392713046" duration="9020000" />
     </task>
     <servers />
   </component>
@@ -117,16 +104,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Rooms/Room.java</url>
-          <line>147</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

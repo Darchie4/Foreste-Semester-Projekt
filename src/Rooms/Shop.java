@@ -33,7 +33,6 @@ public class Shop extends Room {
         } else {
             System.out.println("Du har desv\u00E6rre ikke nok point :(");
         }
-
     }
 
     public void buyUpgrade(Equipment item) throws FullInventoryException, OutOfPointsException{ //sort out this argument of a method
