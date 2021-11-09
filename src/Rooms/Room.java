@@ -3,7 +3,7 @@ package Rooms;
 import Exceptions.GridPlaceFull;
 import Exceptions.IllegalPlayerMovementException;
 import worldofzuul.Game;
-import worldofzuul.Placeble;
+import worldofzuul.Drawable;
 import worldofzuul.Player;
 
 import java.util.ArrayList;
@@ -12,11 +12,11 @@ import java.util.Set;
 import java.util.HashMap;
 
 
-public class Room implements Placeble {
+public class Room implements Drawable {
     private String description;
     private HashMap<String, Room> exits;
     private HashMap<String, String> directions;
-    private Placeble[][] grid;
+    private Drawable[][] grid;
     private int[] playerLocation; // playerLocation[0] = x coordinat, playerLocation[1] = y coordinat
 
     public Room(String description, int gridWith, int gridHeight) {
@@ -24,7 +24,7 @@ public class Room implements Placeble {
         this.description = description;
         exits = new HashMap<String, Room>();
         directions = new HashMap<String, String>();
-        this.grid = new Placeble[gridWith][gridHeight];
+        this.grid = new Drawable[gridWith][gridHeight];
     }
 
     public Room(String description) {
@@ -132,13 +132,12 @@ public class Room implements Placeble {
                 case "East":
                     grid[getGridWidth() / 2][0] = this.exits.get(s);
                     break;
-
             }
         }
     }
 
     public void printGrid(Player player) {
-        Placeble[][] printGrid = grid.clone();
+        Drawable[][] printGrid = grid.clone();
         printGrid[playerLocation[0]][playerLocation[1]] = player;
         String horisontalLine = "";
         for (int i = 0; i < getGridWidth() * 2 + 1; i++) {
@@ -147,13 +146,13 @@ public class Room implements Placeble {
         ArrayList<Character> printArray = new ArrayList<>();
         System.out.println("┍" + horisontalLine + "┑");
 
-        for (Placeble[] placebles : printGrid) {
+        for (Drawable[] drawables : printGrid) {
             printArray.add('|');
-            for (Placeble placeble : placebles) {
-                if (placeble == null) {
+            for (Drawable drawable : drawables) {
+                if (drawable == null) {
                     System.out.print(" /");
                 } else {
-                    System.out.print(" " + placeble.getSymbol());
+                    System.out.print(" " + drawable.getSymbol());
                 }
             }
             System.out.println(" |");
@@ -206,7 +205,7 @@ public class Room implements Placeble {
             return exits.get(direction);
         }
 
-        public Placeble[][] getGrid () {
+        public Drawable[][] getGrid () {
             return grid;
         }
 
@@ -235,7 +234,7 @@ public class Room implements Placeble {
             return playerLocation;
         }
 
-        public void placeOnGrid ( int x, int y, Placeble item) throws GridPlaceFull {
+        public void placeOnGrid ( int x, int y, Drawable item) throws GridPlaceFull {
             if (grid[x][y] != null) {
                 throw new GridPlaceFull();
             }

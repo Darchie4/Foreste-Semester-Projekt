@@ -1,28 +1,24 @@
 package worldofzuul;
 
-public enum PlasticType implements Placeble {
-    SOFT(new Plastic("Blød plast", "Dette er et stykke blød plastik. Det skal sorteres i blød plast"), 'B'),
-    HARD(new Plastic("Hård plast","Dette er et stykke hård plastik. Det skal sorteres i hård plast"),'H'),
-    PANT(new Plastic("Pant", "Dette er et stykke plastik som har pant på. Det skal i pant maskinen"),'P');
+public enum PlasticType implements Drawable {
+    SOFT( 'B', "Blød"),
+    HARD('H', "Hård"),
+    PANT('P', "Pant");
 
-    private final Plastic plast;
     private final char symbol;
-
-    PlasticType(Plastic plast, char symbol) {
-        this.plast = plast;
+    private final String name;
+    PlasticType (char symbol, String name) {
         this.symbol = symbol;
+        this.name = name;
     }
 
-    public Plastic getPlast() {
-        return plast;
+
+    public String getName(){
+        return this.name;
     }
 
     public char getSymbol() {
         return symbol;
-    }
-
-    public String getName(){
-        return this.name();
     }
 
 }

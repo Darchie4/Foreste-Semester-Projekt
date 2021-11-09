@@ -18,7 +18,7 @@ public abstract class Item implements Printable{
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
