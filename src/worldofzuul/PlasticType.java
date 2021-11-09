@@ -1,6 +1,6 @@
 package worldofzuul;
 
-public enum PlasticType implements Drawable {
+public enum PlasticType {
     SOFT( 'B', "Blød"),
     HARD('H', "Hård"),
     PANT('P', "Pant");
@@ -20,5 +20,4 @@ public enum PlasticType implements Drawable {
     public char getSymbol() {
         return symbol;
     }
-
 }

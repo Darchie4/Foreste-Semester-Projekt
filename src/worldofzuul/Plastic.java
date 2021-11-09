@@ -1,6 +1,6 @@
 package worldofzuul;
 
-public class Plastic extends Item{
+public class Plastic extends Item implements Drawable{
     private final int costOfPickup = 15;
     private final PlasticType plasticType;
 
@@ -38,6 +38,9 @@ public class Plastic extends Item{
     public PlasticType getPlasticType() {
         return this.plasticType;
     }
+    public Plastic getSymbol{
+
+    }
 
     public static Plastic plasticFactory(PlasticType plasticType){
         switch(plasticType){
@@ -58,5 +61,10 @@ public class Plastic extends Item{
                 return null;
             }
         }
+    }
+
+    @Override
+    public char getSymbol() {
+        return this.plasticType.getSymbol();
     }
 }
