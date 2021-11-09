@@ -143,11 +143,10 @@ public class Room implements Drawable {
         for (int i = 0; i < getGridWidth() * 2 + 1; i++) {
             horisontalLine += "━";
         }
-        ArrayList<Character> printArray = new ArrayList<>();
         System.out.println("┍" + horisontalLine + "┑");
 
         for (Drawable[] drawables : printGrid) {
-            printArray.add('|');
+            System.out.print('|');
             for (Drawable drawable : drawables) {
                 if (drawable == null) {
                     System.out.print(" /");

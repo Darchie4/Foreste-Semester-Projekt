@@ -6,11 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2d356aba-2cd1-484e-9d6b-8e964d8d8c01" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Biome.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Room.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/Placeble.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/RecervedGridPlace.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/RecervedGridPlace.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rooms/Biome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Biome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rooms/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/TestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/TestMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +47,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.uml" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.TestMain">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="worldofzuul.Main" />
       <module name="Første_semester" />
@@ -77,8 +76,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.TestMain" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>

@@ -1,6 +1,7 @@
 package Rooms;
 
 import Exceptions.GridPlaceFull;
+import worldofzuul.Plastic;
 import worldofzuul.PlasticType;
 import worldofzuul.RecervedGridPlace;
 
@@ -24,7 +25,6 @@ public class Biome extends Room{
         int x;
         int y;
         int plasticTypeSelected;
-        PlasticType[] plasticTypes = PlasticType.values();
 
         for (String s : exitsString) {
             switch (s) {
@@ -83,15 +83,19 @@ public class Biome extends Room{
             Random random = new Random();
             x = random.nextInt(getGridWidth());
             y = random.nextInt(getGridHeight());
-            plasticTypeSelected = random.nextInt(plasticTypes.length);
+            plasticTypeSelected = random.nextInt(PlasticType.values().length);
 
             try{
-                placeOnGrid(x,y,plasticTypes[plasticTypeSelected]);
+                placeOnGrid(x,y,getPlasticFromFactory(plasticTypeSelected));
                 plasticPlaced++;
             } catch (GridPlaceFull e){
                 continue;
             }
         }
+    }
+
+    public Plastic getPlasticFromFactory(int plasticType){
+        return Plastic.plasticFactory(PlasticType.values()[plasticType]);
     }
 
     public int subtractPlastic(int plastic)
