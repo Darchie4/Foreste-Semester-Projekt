@@ -4,14 +4,14 @@ import Exceptions.*;
 
 public class Player implements Drawable {
     private Inventory inventory;
-    private Item itemInHand;
+    private Equipment equipmentInHand;
     private int energy;
     private int points;
     private int maxEnergy;
 
     public Player() {
         this.inventory = new Inventory(10);
-        this.itemInHand = null;
+        this.equipmentInHand = null;
         this.maxEnergy = 100;
         this.energy = maxEnergy;
         this.points = 0;
@@ -85,22 +85,22 @@ public class Player implements Drawable {
     //// in hand handeling  ////
     ////////////////////////////
 
-    public Item getItemInHand() {
-        return itemInHand;
+    public Equipment getEquipmentInHand() {
+        return this.equipmentInHand;
     }
 
-    public void addItemToHand(Item item) throws FullHandException {
-        if (this.itemInHand == null) {
-            this.itemInHand = item;
+    public void addEquipmentToHand(Equipment equipment) throws FullHandException {
+        if (this.equipmentInHand == null) {
+            this.equipmentInHand = equipment;
         } else {
             throw new FullHandException();
         }
     }
 
-    public Item removeItemFromHand() throws EmptyHandException{
-        if (this.itemInHand != null){
-            Item tempItem = this.itemInHand;
-            this.itemInHand = null;
+    public Item removeEquipmentFromHand() throws EmptyHandException{
+        if (this.equipmentInHand != null){
+            Item tempItem = this.equipmentInHand;
+            this.equipmentInHand = null;
             return tempItem;
         } else {
             throw new EmptyHandException();
@@ -121,13 +121,13 @@ public class Player implements Drawable {
     }
 
     public void fromHandToInventory(){
-        Item tempitem = getItemInHand();
+        Equipment tempEquipment = getEquipmentInHand();
         try {
-            this.addItemToInventory(this.removeItemFromHand());
+            this.addItemToInventory(this.removeEquipmentFromHand());
         } catch (FullInventoryException e){
             System.out.println("Dit inventory er fyldt!");
             try{
-                this.addItemToHand(tempitem);
+                this.addEquipmentToHand(tempEquipment);
             } catch (FullHandException fullhand){
                 System.out.println(fullhand.getStackTrace());
             }
@@ -136,14 +136,14 @@ public class Player implements Drawable {
         }
     }
 
-    public void fromInventoryToHand(Item item){
+    public void fromInventoryToHand(Equipment equipment){
         try {
-            this.addItemToHand(item);
+            this.addEquipmentToHand(equipment);
         } catch (FullHandException e){
             System.out.println("Du har allerede noget i hånden");
             return;
         }
-        this.removeItemFromInventory(item);
+        this.removeItemFromInventory(equipment);
     }
 
     public boolean hasSpaceInInventory(){

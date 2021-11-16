@@ -85,8 +85,9 @@ public class Biome extends Room{
             y = random.nextInt(getGridHeight());
             plasticTypeSelected = random.nextInt(PlasticType.values().length);
 
+
             try{
-                placeOnGrid(x,y,getPlasticFromFactory(plasticTypeSelected));
+                placeOnGrid(x,y, Plastic.plasticFactory(PlasticType.values()[plasticTypeSelected]));
                 plasticPlaced++;
             } catch (GridPlaceFull e){
                 continue;
