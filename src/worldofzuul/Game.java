@@ -78,11 +78,11 @@ public class Game {
     public void createFacilities(FacilityRoom facility) {
         Facility hardContainer = new Facility("h\u00E5rd plastikcontainer",
                 "Her i putter du h\u00E5rd plastik", PlasticType.HARD, 2);
-        facility.setFacility(hardContainer, "h\u00E5rd plastikcontainer");
+        facility.setFacility(hardContainer, "h\u00E5rd");
 
         Facility softContainer = new Facility("bl\u00F8d plastikcontainer",
                 "Her i putter du bl\u00F8d plastik", PlasticType.SOFT, 1);
-        facility.setFacility(softContainer, "bl\u00F8d plastikcontainer");
+        facility.setFacility(softContainer, "bl\u00F8d");
 
         Facility pantMachine = new Facility("pantautomat",
                 "Her i putter du flasker og d\u00E5ser med pant", PlasticType.PANT, 3);
@@ -145,17 +145,6 @@ public class Game {
                 buyFromShop(shopping, command.getSecondWord());
             }
         } else if (commandWord == CommandWord.COLLECT) {
-            //  player.addItemToInventory(); //Mads skal implementere dette. Der er behov for et checkup på grid location.
-        } else if (commandWord == CommandWord.USE) {
-            Item item = player.getInventory().searchItemName(command.getSecondWord());
-                if (player.getEquipmentInHand() == null) {
-                    try {
-                        player.addEquipmentToHand(equipment);
-                    } catch (FullHandException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
         } else if (commandWord == CommandWord.REMOVE) {
             try {
                 player.removeEquipmentFromHand();
@@ -296,10 +285,6 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
     public Room getCurrentRoom() {
         return currentRoom;
     }
