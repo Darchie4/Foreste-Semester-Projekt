@@ -82,11 +82,11 @@ public class Game {
     public void createFacilities(FacilityRoom facility){
         Facility hardContainer = new Facility("h\u00E5rd plastikcontainer",
                 "Her i putter du h\u00E5rd plastik", PlasticType.HARD, 2 );
-        facility.setFacility(hardContainer, "h\u00E5rd plastikcontainer" );
+        facility.setFacility(hardContainer, "h\u00E5rd" );
 
         Facility softContainer = new Facility("bl\u00F8d plastikcontainer",
                 "Her i putter du bl\u00F8d plastik", PlasticType.SOFT, 1 );
-        facility.setFacility(softContainer, "bl\u00F8d plastikcontainer");
+        facility.setFacility(softContainer, "bl\u00F8d");
 
         Facility pantMachine = new Facility("pantautomat",
                 "Her i putter du flasker og d\u00E5ser med pant", PlasticType.PANT, 3 );
@@ -173,7 +173,10 @@ public class Game {
 
                 foundPlastic = getPlasticFromInventory(plasticType);
                 chosenFacility = selectFacility(room);
+                player.removeItemFromInventory(foundPlastic);
                 chosenFacility.use(foundPlastic.getPlasticType());
+            } else {
+                System.out.println("Hov!, du er ikke på genbrugsstationen");
             }
         }
         return wantToQuit;
@@ -192,6 +195,7 @@ public class Game {
             }
         }
     }
+
     private Plastic getPlasticFromInventory(String chosenType){
         for (Item item: player.getInventory().getItems()) {
             if (item instanceof Plastic plastic && plastic.getPlasticType().getName().equals(chosenType))
@@ -200,11 +204,12 @@ public class Game {
         System.out.println("Du har desværre intet " + chosenType + " på dig");
         return null;
     }
+
     private Facility selectFacility(FacilityRoom room){
         System.out.println("Hvor vil du gerne sortere dit plastik?");
         System.out.println("> h\u00E5rd plastikcontainer \n> bl\u00F8d plastikcontainer \n> pantautomat \n");
-        Command command = parser.getCommand();
-        String location = command.getCommandWord().toString().toLowerCase();
+        Scanner chosenContainer = new Scanner(System.in);
+        String location = chosenContainer.next();
         return room.getFacilities().get(location);
     }
 
