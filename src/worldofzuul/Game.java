@@ -148,12 +148,11 @@ public class Game {
             //  player.addItemToInventory(); //Mads skal implementere dette. Der er behov for et checkup på grid location.
         } else if (commandWord == CommandWord.USE) {
             Item item = player.getInventory().searchItemName(command.getSecondWord());
-                if (player.getEquipmentInHand() == null) {
-                    try {
-                        player.addEquipmentToHand(equipment);
-                    } catch (FullHandException e) {
-                        e.printStackTrace();
-                    }
+            if (player.getEquipmentInHand() == null && item instanceof Equipment) {
+                try {
+                    player.addEquipmentToHand((Equipment) item);
+                } catch (FullHandException e) {
+                    e.printStackTrace();
                 }
             }
         } else if (commandWord == CommandWord.REMOVE) {

@@ -263,7 +263,7 @@ public class Room implements Drawable {
 
     private boolean subtractEnegy(Player player, Plastic plastic) {
         try {
-            player.modifyEnergy(plastic.getCostOfPickup(), false);
+            player.modifyEnergy((plastic.getCostOfPickup()- (player.getEquipmentInHand() != null ? player.getEquipmentInHand().getModifier() : 0)), false);
             return true;
         } catch (EnergyOutOfBoundsException ex) {
             return false;
