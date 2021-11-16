@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2d356aba-2cd1-484e-9d6b-8e964d8d8c01" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Room.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/worldofzuul/RecervedGridPlace.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/CommandWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/CommandWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Game.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +45,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.uml" />
   </component>
-  <component name="RunManager" selected="Application.TestMain">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="worldofzuul.Main" />
       <module name="Første_semester" />
@@ -74,8 +74,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestMain" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.TestMain" />
       </list>
     </recent_temporary>
   </component>
@@ -94,6 +94,7 @@
       <workItem from="1636488407945" duration="3548000" />
       <workItem from="1636498068436" duration="31000" />
       <workItem from="1636535567946" duration="173000" />
+      <workItem from="1637049756677" duration="1409000" />
     </task>
     <servers />
   </component>
