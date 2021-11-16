@@ -4,6 +4,7 @@ import Exceptions.*;
 import Rooms.*;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Game {
@@ -38,8 +39,8 @@ public class Game {
 
         playground = new Biome("du er tager over til legepladsen", 10, 6, 6);
         park = new Biome("du er på tur i parken", 20, 10, 10);
-        playground.setExit("South", "Hjem", home);
-        playground.setExit("North", "Parken", park);
+        playground.setExit("South", "hjem", home);
+        playground.setExit("North", "parken", park);
 
         park.setExit("South", "Legepladsen", playground);
         forest = new Biome("du er p\u00E5 tur i skoven", 15, 8, 8);
@@ -50,18 +51,18 @@ public class Game {
 
         forest = new Biome("du er på tur i skoven", 15, 8, 8);
         beach = new Biome("du er taget til stranden", 25, 12, 12);
-        forest.setExit("West", "Hjem", home);
-        forest.setExit("East", "Starnd", beach);
+        forest.setExit("West", "hjem", home);
+        forest.setExit("East", "strand", beach);
         beach.setExit("West", "hjem", home);
 
 
-        map.setExit("North", "Legepladsen", playground);
-        map.setExit("South", "Parken", park);
-        map.setExit("East", "Skoven", forest);
-        map.setExit("West", "Stranden", beach);
-        map.setExit("North-East", "Genbrugsstationen", facility);
-        map.setExit("North-west", "Butikken", shop);
-        map.setExit("North-south", "Hjem", home);
+        map.setExit("North", "legepladsen", playground);
+        map.setExit("South", "parken", park);
+        map.setExit("East", "skoven", forest);
+        map.setExit("West", "stranden", beach);
+        map.setExit("North-East", "genbrugsstationen", facility);
+        map.setExit("North-west", "butikken", shop);
+        map.setExit("North-south", "hjem", home);
 
         home.generateGrid();
         shop.generateGrid();
@@ -240,7 +241,7 @@ public class Game {
 
     private Plastic getPlasticFromInventory(String chosenType) {
         for (Item item : player.getInventory().getItems()) {
-            if (item instanceof Plastic plastic && plastic.getPlasticType().getName().equals(chosenType))
+            if (item instanceof Plastic plastic && plastic.getPlasticType().getName().toLowerCase().equals(chosenType))
                 return plastic;
         }
         System.out.println("Du har desværre intet " + chosenType + " på dig");
@@ -272,7 +273,7 @@ public class Game {
 
         String direction = command.getSecondWord();
 
-        Room nextRoom = currentRoom.getExit(direction);
+        Room nextRoom = currentRoom.getExit(direction.toLowerCase());
 
         if (nextRoom == null) {
             System.out.println("Hov! Der kan du ikke g\u00E5 hen :(");
