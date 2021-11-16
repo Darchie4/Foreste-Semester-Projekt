@@ -1,6 +1,7 @@
 package Rooms;
 
 import Exceptions.GridPlaceFull;
+import worldofzuul.Plastic;
 import worldofzuul.PlasticType;
 import worldofzuul.RecervedGridPlace;
 
@@ -85,8 +86,9 @@ public class Biome extends Room{
             y = random.nextInt(getGridHeight());
             plasticTypeSelected = random.nextInt(plasticTypes.length);
 
+
             try{
-                placeOnGrid(x,y,plasticTypes[plasticTypeSelected]);
+                placeOnGrid(x,y, Plastic.plasticFactory(PlasticType.values()[plasticTypeSelected]));
                 plasticPlaced++;
             } catch (GridPlaceFull e){
                 continue;
