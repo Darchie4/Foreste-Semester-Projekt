@@ -171,36 +171,50 @@ public class Game {
                 chosenFacility = selectFacility(room);
                 chosenFacility.use(foundPlastic.getPlasticType());
             }
-        } else if (commandWord == CommandWord.UP){
-            if( !(currentRoom instanceof Shop)){
+        } else if (commandWord == CommandWord.UP) {
+            if (!(currentRoom instanceof Shop)) {
                 try {
                     currentRoom.movePlayer('n', Integer.parseInt(command.getSecondWord()), this);
-                } catch (IllegalPlayerMovementException ex){
+                } catch (IllegalPlayerMovementException ex) {
                     System.out.println("Der kan du ikke gå hen!");
                 }
             }
-        } else if (commandWord == CommandWord.DOWN){
-            if( !(currentRoom instanceof Shop)){
+        } else if (commandWord == CommandWord.DOWN) {
+            if (!(currentRoom instanceof Shop)) {
                 try {
                     currentRoom.movePlayer('s', Integer.parseInt(command.getSecondWord()), this);
-                } catch (IllegalPlayerMovementException ex){
+                } catch (IllegalPlayerMovementException ex) {
                     System.out.println("Der kan du ikke gå hen!");
                 }
             }
-        } else if (commandWord == CommandWord.LEFT){
-            if( !(currentRoom instanceof Shop)){
+        } else if (commandWord == CommandWord.LEFT) {
+            if (!(currentRoom instanceof Shop)) {
                 try {
                     currentRoom.movePlayer('w', Integer.parseInt(command.getSecondWord()), this);
-                } catch (IllegalPlayerMovementException ex){
+                } catch (IllegalPlayerMovementException ex) {
                     System.out.println("Der kan du ikke gå hen!");
                 }
             }
-        } else if (commandWord == CommandWord.RIGHT){
-            if( !(currentRoom instanceof Shop)){
+        } else if (commandWord == CommandWord.RIGHT) {
+            if (!(currentRoom instanceof Shop)) {
                 try {
                     currentRoom.movePlayer('e', Integer.parseInt(command.getSecondWord()), this);
-                } catch (IllegalPlayerMovementException ex){
+                } catch (IllegalPlayerMovementException ex) {
                     System.out.println("Der kan du ikke gå hen!");
+                }
+            }
+        } else if (commandWord == CommandWord.PICKUP) {
+            if ((currentRoom instanceof Shop) || (currentRoom instanceof FacilityRoom) || (currentRoom instanceof Home)) {
+                System.out.println("Du kan ikke samle noget op i dette rum");
+            } else {
+                if (command.getSecondWord().equals("op")) {
+                    currentRoom.pickUpItemUp(player);
+                } else if (command.getSecondWord().equals("ned")) {
+                    currentRoom.pickUpItemDown(player);
+                } else if (command.getSecondWord().equals("venstre")) {
+                    currentRoom.pickUpItemLeft(player);
+                } else if (command.getSecondWord().equals("højre")) {
+                    currentRoom.pickUpItemRight(player);
                 }
             }
         }

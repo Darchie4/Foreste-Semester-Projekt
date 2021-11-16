@@ -6,8 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2d356aba-2cd1-484e-9d6b-8e964d8d8c01" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Første_semester/Rooms/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rooms/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rooms/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/CommandWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/CommandWord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/worldofzuul/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Plastic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worldofzuul/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/worldofzuul/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +98,7 @@
       <workItem from="1636488407945" duration="3548000" />
       <workItem from="1636498068436" duration="31000" />
       <workItem from="1636535567946" duration="173000" />
-      <workItem from="1637049756677" duration="1409000" />
+      <workItem from="1637049756677" duration="9844000" />
     </task>
     <servers />
   </component>
@@ -112,5 +116,16 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/worldofzuul/Game.java</url>
+          <line>205</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

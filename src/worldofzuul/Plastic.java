@@ -62,4 +62,8 @@ public class Plastic extends Item implements Drawable{
     public char getSymbol() {
         return this.plasticType.getSymbol();
     }
+
+    public int getCostOfPickup() {
+        return costOfPickup;
+    }
 }

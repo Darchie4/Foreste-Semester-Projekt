@@ -146,6 +146,10 @@ public class Player implements Drawable {
         this.removeItemFromInventory(item);
     }
 
+    public boolean hasSpaceInInventory(){
+        return !(inventory.inventorySize == inventory.getItems().size());
+    }
+
     ///////////////////////////////////
     //// Nono don't touch me there ////
     //// This is my nono square    ////
