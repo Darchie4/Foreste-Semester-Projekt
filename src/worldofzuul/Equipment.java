@@ -32,6 +32,7 @@ public class Equipment extends Item{
         level++;
         modifier+=2;
         price+=15;
+        formatUpgradeName();
     }
 
     private void formatUpgradeName(){

@@ -8,15 +8,10 @@ import java.util.Arrays;
 
 public class TestMain {
     public static void main(String[] args) {
-
-        Plastic plastic = Plastic.plasticFactory(PlasticType.HARD);
-        plastic.print();
-        System.out.println();System.out.println();System.out.println();
-        Plastic plastic1 = Plastic.plasticFactory(PlasticType.SOFT);
-        plastic1.print();
-        System.out.println();System.out.println();System.out.println();
-        Plastic plastic2 = Plastic.plasticFactory(PlasticType.PANT);
-        plastic2.print();
+        Player player = new Player();
+        player.addPoints(500);
+        Game game = new Game(player);
+        game.play();
 
         /*Player player = new Player();
         Game game = new Game(player);

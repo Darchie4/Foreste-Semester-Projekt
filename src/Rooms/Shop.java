@@ -35,18 +35,26 @@ public class Shop extends Room {
         }
     }
 
-    public void buyUpgrade(Equipment item) throws FullInventoryException, OutOfPointsException{ //sort out this argument of a method
-        if (Game.player.getPoints() >= (item.getPrice())) { //get price of item
-            for (Item inventoryItem : Game.player.getInventory().getItems()) { // searches for ALL items in inventory
-                if (inventoryItem instanceof Equipment equipment) { //filters for equipment
-                    if (equipment.getId() == 1){ // searches for correct ID: but parses in an item
+    public void buyUpgrade() throws OutOfPointsException{
+        Equipment equipment = Game.player.getEquipmentInHand();
+        int upgradePrice = equipment.getPrice();
+        System.out.println("Det koster " + upgradePrice + " at opgradere " + equipment.getName());
+        System.out.println("Vil du gerne opgradere det? Ja eller Nej?");
+        String answer = Game.getInput();
+        if (answer.toLowerCase().equals("ja") && checkPoints(equipment.getPrice())) {
+            Game.player.getEquipmentInHand().upgrade();
+        }
+    }
 
-                        Game.player.subtractPoints(equipment.getPrice()); // finds price of equipment
-                        equipment.upgrade(); //upgrades equipment
-
-                    }
-                }
-            }
+    private boolean checkPoints(int price) {
+        try {
+            if(Game.player.getPoints() < price)
+                throw new OutOfPointsException();
+            Game.player.subtractPoints(price);
+            return true;
+        } catch(OutOfPointsException ex){
+            System.out.println("Du har desværre ikke nok penge til at opgradere");
+            return false;
         }
     }
 }
