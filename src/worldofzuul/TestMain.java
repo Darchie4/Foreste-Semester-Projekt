@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class TestMain {
     public static void main(String[] args) {
-
+        /*
         Plastic plastic = Plastic.plasticFactory(PlasticType.HARD);
         plastic.print();
         System.out.println();System.out.println();System.out.println();
@@ -17,8 +17,10 @@ public class TestMain {
         System.out.println();System.out.println();System.out.println();
         Plastic plastic2 = Plastic.plasticFactory(PlasticType.PANT);
         plastic2.print();
+         */
 
-        /*Player player = new Player();
+
+        Player player = new Player();
         Game game = new Game(player);
         Biome room = new Biome("This is a test room", 10, 8, 8);
         Biome beach = new Biome("This is a test room", 10, 8, 8);
@@ -44,7 +46,7 @@ public class TestMain {
             System.out.println("Du er dum3\n" + e);
         }
         System.out.println(Arrays.toString(game.getCurrentRoom().getPlayerLocation()));
-        room.printGrid(player); */
+        room.printGrid(player);
 
     }
 }

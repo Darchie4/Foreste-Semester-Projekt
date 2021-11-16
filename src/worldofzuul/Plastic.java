@@ -9,8 +9,6 @@ public class Plastic extends Item implements Drawable{
         this.plasticType = plasticType;
     }
 
-
-
     public Plastic pickup(Player p) {
         return null;
     }
@@ -63,5 +61,9 @@ public class Plastic extends Item implements Drawable{
     @Override
     public char getSymbol() {
         return this.plasticType.getSymbol();
+    }
+
+    public int getCostOfPickup() {
+        return costOfPickup;
     }
 }
