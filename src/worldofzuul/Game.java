@@ -151,7 +151,7 @@ public class Game {
           //  player.addItemToInventory(); //Mads skal implementere dette. Der er behov for et checkup på grid location.
         } else if (commandWord == CommandWord.USE){
             Item item = player.getInventory().searchItemName(command.getSecondWord());
-                if (player.getItemInHand() == null) {
+                if (player.getEquipmentInHand() == null) {
                     try {
                         player.addItemToHand(item);
                     } catch (FullHandException e) {
@@ -161,7 +161,7 @@ public class Game {
             }
         else if (commandWord == CommandWord.REMOVE){
             try {
-                player.removeItemFromHand();
+                player.removeEquipmentFromHand();
             } catch (EmptyHandException ex){
                 System.out.println();
             }
@@ -250,6 +250,10 @@ public class Game {
         }
     }
 
+    public static String getInput(){
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
     public Room getCurrentRoom() {
         return currentRoom;
     }
