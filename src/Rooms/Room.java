@@ -1,10 +1,7 @@
 package Rooms;
 
-import Exceptions.GridPlaceFull;
-import Exceptions.IllegalPlayerMovementException;
-import worldofzuul.Game;
-import worldofzuul.Drawable;
-import worldofzuul.Player;
+import Exceptions.*;
+import worldofzuul.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -79,7 +76,7 @@ public class Room implements Drawable {
                 }
                 for (int y = this.playerLocation[1] - length; y < playerLocation[1]; y++) {
                     if (isRoom(grid[playerLocation[1]][y])) {
-                        movePlayerToNewRoom(game, grid[playerLocation[0]][y], getCurrentRoomHeight(game)/ 2, getCurrentRoomWidth(game)- 1);
+                        movePlayerToNewRoom(game, grid[playerLocation[0]][y], getCurrentRoomHeight(game) / 2, getCurrentRoomWidth(game) - 1);
                         return;
                     }
                     testIfThingsIsInTheWayY(y);
@@ -90,32 +87,33 @@ public class Room implements Drawable {
         throw new IllegalPlayerMovementException();
     }
 
-    private void testIfThingsIsInTheWayX(int x) throws IllegalPlayerMovementException{
+    private void testIfThingsIsInTheWayX(int x) throws IllegalPlayerMovementException {
         if (grid[x][playerLocation[1]] != null && !(grid[x][playerLocation[1]] instanceof Player)) {
             throw new IllegalPlayerMovementException();
         }
     }
 
-    private void testIfThingsIsInTheWayY(int y) throws IllegalPlayerMovementException{
+    private void testIfThingsIsInTheWayY(int y) throws IllegalPlayerMovementException {
         if (grid[playerLocation[0]][y] != null && !(grid[playerLocation[0]][y] instanceof Player)) {
             throw new IllegalPlayerMovementException();
         }
     }
 
-    private boolean isRoom(Drawable object){
+    private boolean isRoom(Drawable object) {
         return object instanceof Room;
     }
 
-    private void movePlayerToNewRoom(Game game, Drawable newRoom, int x, int y){
+    private void movePlayerToNewRoom(Game game, Drawable newRoom, int x, int y) {
         game.setCurrentRoom((Room) newRoom);
         game.getCurrentRoom().getPlayerLocation()[0] = x;
         game.getCurrentRoom().getPlayerLocation()[1] = y;
     }
 
-    private int getCurrentRoomHeight(Game game){
+    private int getCurrentRoomHeight(Game game) {
         return game.getCurrentRoom().getGridHeight();
     }
-    private int getCurrentRoomWidth(Game game){
+
+    private int getCurrentRoomWidth(Game game) {
         return game.getCurrentRoom().getGridWidth();
     }
 
@@ -146,11 +144,10 @@ public class Room implements Drawable {
         for (int i = 0; i < getGridWidth() * 2 + 1; i++) {
             horisontalLine += "━";
         }
-        ArrayList<Character> printArray = new ArrayList<>();
         System.out.println("┍" + horisontalLine + "┑");
 
         for (Drawable[] drawables : printGrid) {
-            printArray.add('|');
+            System.out.print('|');
             for (Drawable drawable : drawables) {
                 if (drawable == null) {
                     System.out.print(" /");
@@ -173,59 +170,159 @@ public class Room implements Drawable {
         return description;
     }
 
+    public void pickUpItemUp(Player player) {
+        if (checkIfNotNullOrRoom(getItemInGridUp())) {
+            if (!player.hasSpaceInInventory()) {
+                System.out.println("Du kan ikke samle mere op");
+                return;
+            } else if (!(subtractEnegy(player, (Plastic) getItemInGridUp()))) {
+                System.out.println("Du ikke nok energy til at samle mere plastik");
+                return;
+            }
+            pickupItem(player, (Plastic) getItemInGridUp());
+            grid[playerLocation[0] - 1][playerLocation[1]] = null;
+        }
+    }
+
+    public void pickUpItemDown(Player player) {
+        if (checkIfNotNullOrRoom(getItemInGridDown())) {
+            if (!player.hasSpaceInInventory()) {
+                System.out.println("Du kan ikke samle mere op");
+                return;
+            } else if (!(subtractEnegy(player, (Plastic) getItemInGridDown()))) {
+                System.out.println("Du ikke nok energy til at samle mere plastik");
+                return;
+            }
+            pickupItem(player, (Plastic) getItemInGridDown());
+            grid[playerLocation[0] + 1][playerLocation[1]] = null;
+        }
+    }
+
+    public void pickUpItemLeft(Player player) {
+        if (checkIfNotNullOrRoom(getItemInGridLeft())) {
+            if (!player.hasSpaceInInventory()) {
+                System.out.println("Du kan ikke samle mere op");
+                return;
+            } else if (!(subtractEnegy(player, (Plastic) getItemInGridLeft()))) {
+                System.out.println("Du ikke nok energy til at samle mere plastik");
+                return;
+            }
+            pickupItem(player, (Plastic) getItemInGridLeft());
+            grid[playerLocation[0]][playerLocation[1] - 1] = null;
+        }
+    }
+
+    public void pickUpItemRight(Player player) {
+        if (checkIfNotNullOrRoom(getItemInGridRight())) {
+            if (!player.hasSpaceInInventory()) {
+                System.out.println("Du kan ikke samle mere op");
+                return;
+            } else if (!(subtractEnegy(player, (Plastic) getItemInGridRight()))) {
+                System.out.println("Du ikke nok energy til at samle mere plastik");
+                return;
+            }
+            pickupItem(player, (Plastic) getItemInGridRight());
+            grid[playerLocation[0]][playerLocation[1] + 1] = null;
+        }
+    }
+
+    private boolean checkIfNotNullOrRoom(Drawable object) {
+        return object != null && !(object instanceof Room);
+    }
+
+    private Drawable getItemInGridUp() {
+        if (playerLocation[0] - 1 < 0) {
+            return null;
+        }
+        return grid[playerLocation[0] - 1][playerLocation[1]];
+    }
+
+    private Drawable getItemInGridDown() {
+        return grid[playerLocation[0] + 1][playerLocation[1]];
+    }
+
+    private Drawable getItemInGridLeft() {
+        if (playerLocation[1] - 1 < 0) {
+            return null;
+        }
+        return grid[playerLocation[0]][playerLocation[1] - 1];
+    }
+
+    private Drawable getItemInGridRight() {
+
+        return grid[playerLocation[0]][playerLocation[1] + 1];
+    }
+
+    private void pickupItem(Player player, Plastic plastic) {
+        try {
+            player.addItemToInventory(plastic);
+        } catch (FullInventoryException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    private boolean subtractEnegy(Player player, Plastic plastic) {
+        try {
+            player.modifyEnergy(plastic.getCostOfPickup(), false);
+            return true;
+        } catch (EnergyOutOfBoundsException ex) {
+            return false;
+        }
+    }
+
     public String getLongDescription() {
         return description + ".\n" + getExitString();
     }
 
-        private String getExitString () {
-            String returnString = "Exits:";
+    private String getExitString() {
+        String returnString = "Exits:";
 
-            Set<String> keys = exits.keySet();
-            for (String exit : keys) {
-                returnString += " " + exit;
-            }
-            return returnString;
+        Set<String> keys = exits.keySet();
+        for (String exit : keys) {
+            returnString += " " + exit;
         }
-
-        public Room getExit (String direction){
-            return exits.get(direction);
-        }
-
-        public Drawable[][] getGrid () {
-            return grid;
-        }
-
-        public int getGridWidth() {
-            return this.grid.length;
-        }
-
-        public int getGridHeight () {
-            return this.grid[1].length;
-        }
-
-        @Override
-        public char getSymbol () {
-            return '#';
-        }
-
-        public HashMap<String, String> getDirections () {
-            return directions;
-        }
-
-        public HashMap<String, Room> getExits () {
-            return exits;
-        }
-
-        public int[] getPlayerLocation () {
-            return playerLocation;
-        }
-
-        public void placeOnGrid ( int x, int y, Drawable item) throws GridPlaceFull {
-            if (grid[x][y] != null) {
-                throw new GridPlaceFull();
-            }
-            grid[x][y] = item;
-        }
-
+        return returnString;
     }
+
+    public Room getExit(String direction) {
+        return exits.get(direction);
+    }
+
+    public Drawable[][] getGrid() {
+        return grid;
+    }
+
+    public int getGridWidth() {
+        return this.grid.length;
+    }
+
+    public int getGridHeight() {
+        return this.grid[1].length;
+    }
+
+    @Override
+    public char getSymbol() {
+        return '#';
+    }
+
+    public HashMap<String, String> getDirections() {
+        return directions;
+    }
+
+    public HashMap<String, Room> getExits() {
+        return exits;
+    }
+
+    public int[] getPlayerLocation() {
+        return playerLocation;
+    }
+
+    public void placeOnGrid(int x, int y, Drawable item) throws GridPlaceFull {
+        if (grid[x][y] != null) {
+            throw new GridPlaceFull();
+        }
+        grid[x][y] = item;
+    }
+
+}
 

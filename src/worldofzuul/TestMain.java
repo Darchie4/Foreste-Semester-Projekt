@@ -8,12 +8,26 @@ import java.util.Arrays;
 
 public class TestMain {
     public static void main(String[] args) {
+<<<<<<< HEAD
         Player player = new Player();
         player.addPoints(500);
         Game game = new Game(player);
         game.play();
+=======
+        /*
+        Plastic plastic = Plastic.plasticFactory(PlasticType.HARD);
+        plastic.print();
+        System.out.println();System.out.println();System.out.println();
+        Plastic plastic1 = Plastic.plasticFactory(PlasticType.SOFT);
+        plastic1.print();
+        System.out.println();System.out.println();System.out.println();
+        Plastic plastic2 = Plastic.plasticFactory(PlasticType.PANT);
+        plastic2.print();
+         */
 
-        /*Player player = new Player();
+>>>>>>> 8f7d570325a66351485c2a4a7274dfa280e5a974
+
+        Player player = new Player();
         Game game = new Game(player);
         Biome room = new Biome("This is a test room", 10, 8, 8);
         Biome beach = new Biome("This is a test room", 10, 8, 8);
@@ -39,7 +53,7 @@ public class TestMain {
             System.out.println("Du er dum3\n" + e);
         }
         System.out.println(Arrays.toString(game.getCurrentRoom().getPlayerLocation()));
-        room.printGrid(player); */
+        room.printGrid(player);
 
     }
 }

@@ -1,6 +1,6 @@
 package worldofzuul;
 
-public class RecervedGridPlace implements Drawable {
+public class ReservedGridPlace implements Drawable {
     @Override
     public char getSymbol() {
         return '/';

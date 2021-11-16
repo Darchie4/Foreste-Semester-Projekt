@@ -107,7 +107,7 @@ public class Player implements Drawable {
         }
     }
 
-    ////////////////////////////////
+    ///////////////////////////////
     //// Under here is Item in ////
     //// inventory handeling   ////
     ///////////////////////////////
@@ -144,6 +144,10 @@ public class Player implements Drawable {
             return;
         }
         this.removeItemFromInventory(equipment);
+    }
+
+    public boolean hasSpaceInInventory(){
+        return !(inventory.inventorySize == inventory.getItems().size());
     }
 
     ///////////////////////////////////

@@ -35,6 +35,15 @@ public class Inventory {
         return null;
     }
 
+    public Equipment searchEquipmentId(int equipmentId) {
+        for (Item item : this.items) {
+            if (item instanceof Equipment && ((Equipment) item).getId() == equipmentId) {
+                return (Equipment) item;
+            }
+        }
+        return null;
+    }
+
     public void removeItem(Item item){
         this.items.remove(item);
     }
