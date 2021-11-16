@@ -8,6 +8,10 @@ import java.util.Arrays;
 
 public class TestMain {
     public static void main(String[] args) {
+        Player player = new Player();
+        player.addPoints(500);
+        Game game = new Game(player);
+        game.play();
         /*
         Plastic plastic = Plastic.plasticFactory(PlasticType.HARD);
         plastic.print();
@@ -18,8 +22,6 @@ public class TestMain {
         Plastic plastic2 = Plastic.plasticFactory(PlasticType.PANT);
         plastic2.print();
          */
-
-
         Player player = new Player();
         Game game = new Game(player);
         Biome room = new Biome("This is a test room", 10, 8, 8);

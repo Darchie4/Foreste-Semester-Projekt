@@ -1,5 +1,7 @@
 package worldofzuul;
 
+import Exceptions.OutOfPointsException;
+
 public class Equipment extends Item{
 
     private int modifier;
@@ -32,6 +34,7 @@ public class Equipment extends Item{
         level++;
         modifier+=2;
         price+=15;
+        formatUpgradeName();
     }
 
     private void formatUpgradeName(){

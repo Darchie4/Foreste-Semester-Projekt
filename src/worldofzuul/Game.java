@@ -78,11 +78,11 @@ public class Game {
     public void createFacilities(FacilityRoom facility) {
         Facility hardContainer = new Facility("h\u00E5rd plastikcontainer",
                 "Her i putter du h\u00E5rd plastik", PlasticType.HARD, 2);
-        facility.setFacility(hardContainer, "h\u00E5rd plastikcontainer");
+        facility.setFacility(hardContainer, "h\u00E5rd");
 
         Facility softContainer = new Facility("bl\u00F8d plastikcontainer",
                 "Her i putter du bl\u00F8d plastik", PlasticType.SOFT, 1);
-        facility.setFacility(softContainer, "bl\u00F8d plastikcontainer");
+        facility.setFacility(softContainer, "bl\u00F8d");
 
         Facility pantMachine = new Facility("pantautomat",
                 "Her i putter du flasker og d\u00E5ser med pant", PlasticType.PANT, 3);
@@ -291,6 +291,10 @@ public class Game {
         }
     }
 
+    public static String getInput(){
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
     public Room getCurrentRoom() {
         return currentRoom;
     }
