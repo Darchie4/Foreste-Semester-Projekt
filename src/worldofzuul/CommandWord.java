@@ -4,20 +4,17 @@ package worldofzuul;
 * ø - \u00F8
 * å - \u00E5
 * */
-public enum CommandWord
-{
+public enum CommandWord {
     GO("g\u00E5"), QUIT("afslut"), HELP("hj\u00E6lp"), UNKNOWN("?"), COLLECT("samle"),
     BUY("k\u00F8b"), USE("brug"), REMOVE("fjern"), RECYCLE("sorter");
     
     private String commandString;
     
-    CommandWord(String commandString)
-    {
+    CommandWord(String commandString) {
         this.commandString = commandString;
     }
 
-    public String toString()
-    {
+    public String toString() {
         return commandString;
     }
 }
