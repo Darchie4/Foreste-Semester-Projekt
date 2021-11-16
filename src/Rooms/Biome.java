@@ -3,7 +3,7 @@ package Rooms;
 import Exceptions.GridPlaceFull;
 import worldofzuul.Plastic;
 import worldofzuul.PlasticType;
-import worldofzuul.RecervedGridPlace;
+import worldofzuul.ReservedGridPlace;
 
 import java.util.Random;
 
@@ -25,7 +25,6 @@ public class Biome extends Room{
         int x;
         int y;
         int plasticTypeSelected;
-        PlasticType[] plasticTypes = PlasticType.values();
 
         for (String s : exitsString) {
             switch (s) {
@@ -33,9 +32,9 @@ public class Biome extends Room{
                     try{
                         placeOnGrid(0,getGridHeight()/2,this.getExits().get(this.getDirections().get(s)));
 
-                        placeOnGrid(0, getGridHeight()/2+1,new RecervedGridPlace());
-                        placeOnGrid(0,(getGridHeight()/2)-1,new RecervedGridPlace());
-                        placeOnGrid(1,getGridHeight()/2,new RecervedGridPlace());
+                        placeOnGrid(0, getGridHeight()/2+1,new ReservedGridPlace());
+                        placeOnGrid(0,(getGridHeight()/2)-1,new ReservedGridPlace());
+                        placeOnGrid(1,getGridHeight()/2,new ReservedGridPlace());
 
                     } catch (GridPlaceFull e){
                         System.out.println("Der skete en fejl under generationen af kortet");
@@ -45,9 +44,9 @@ public class Biome extends Room{
                     try {
                         placeOnGrid(getGridWidth()-1,getGridHeight()/2, this.getExits().get(this.getDirections().get(s)));
 
-                        placeOnGrid(getGridWidth()-1, (getGridHeight()/2)+1, new RecervedGridPlace());
-                        placeOnGrid(getGridWidth()-1, (getGridHeight()/2)-1, new RecervedGridPlace());
-                        placeOnGrid(getGridWidth()-2, getGridHeight()/2, new RecervedGridPlace());
+                        placeOnGrid(getGridWidth()-1, (getGridHeight()/2)+1, new ReservedGridPlace());
+                        placeOnGrid(getGridWidth()-1, (getGridHeight()/2)-1, new ReservedGridPlace());
+                        placeOnGrid(getGridWidth()-2, getGridHeight()/2, new ReservedGridPlace());
 
                     } catch (GridPlaceFull e){
                         System.out.println("Der skete en fejl under generationen af kortet");
@@ -57,9 +56,9 @@ public class Biome extends Room{
                     try {
                         placeOnGrid(getGridWidth()/2, getGridHeight()-1,this.getExits().get(this.getDirections().get(s)));
 
-                        placeOnGrid((getGridWidth()/2)+1, getGridHeight()-1,new RecervedGridPlace());
-                        placeOnGrid((getGridWidth()/2)-1, getGridHeight()-1,new RecervedGridPlace());
-                        placeOnGrid(getGridWidth()/2, getGridHeight()-2,new RecervedGridPlace());
+                        placeOnGrid((getGridWidth()/2)+1, getGridHeight()-1,new ReservedGridPlace());
+                        placeOnGrid((getGridWidth()/2)-1, getGridHeight()-1,new ReservedGridPlace());
+                        placeOnGrid(getGridWidth()/2, getGridHeight()-2,new ReservedGridPlace());
 
                     } catch (GridPlaceFull e){
                         System.out.println("Der skete en fejl under generationen af kortet");
@@ -69,9 +68,9 @@ public class Biome extends Room{
                     try {
                         placeOnGrid(getGridWidth()/2, 0,this.getExits().get(this.getDirections().get(s)));
 
-                        placeOnGrid((getGridWidth()/2)+1,0,new RecervedGridPlace());
-                        placeOnGrid((getGridWidth()/2)-1,0,new RecervedGridPlace());
-                        placeOnGrid(getGridWidth()/2,1,new RecervedGridPlace());
+                        placeOnGrid((getGridWidth()/2)+1,0,new ReservedGridPlace());
+                        placeOnGrid((getGridWidth()/2)-1,0,new ReservedGridPlace());
+                        placeOnGrid(getGridWidth()/2,1,new ReservedGridPlace());
 
                     } catch (GridPlaceFull e){
                         System.out.println("Der skete en fejl under generationen af kortet");
@@ -84,7 +83,7 @@ public class Biome extends Room{
             Random random = new Random();
             x = random.nextInt(getGridWidth());
             y = random.nextInt(getGridHeight());
-            plasticTypeSelected = random.nextInt(plasticTypes.length);
+            plasticTypeSelected = random.nextInt(PlasticType.values().length);
 
 
             try{
@@ -94,6 +93,10 @@ public class Biome extends Room{
                 continue;
             }
         }
+    }
+
+    public Plastic getPlasticFromFactory(int plasticType){
+        return Plastic.plasticFactory(PlasticType.values()[plasticType]);
     }
 
     public int subtractPlastic(int plastic)
