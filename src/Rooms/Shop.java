@@ -7,7 +7,9 @@ import worldofzuul.Game;
 import worldofzuul.Inventory;
 import worldofzuul.Item;
 
+import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Shop extends Room {
 
@@ -24,12 +26,12 @@ public class Shop extends Room {
         return inventory.getItems();
     }
 
-    public void buy (Equipment item) throws FullInventoryException, OutOfPointsException {
+    public void buy (Equipment equipment) throws FullInventoryException, OutOfPointsException {
 
-        if (Game.player.getPoints() >= (item.getPrice())) {
-            Game.player.addItemToInventory(item);
-            Game.player.subtractPoints(item.getPrice());
-            this.inventory.removeItem(item);
+        if (Game.player.getPoints() >= (equipment.getPrice())) {
+            Game.player.addItemToInventory(equipment);
+            Game.player.subtractPoints(equipment.getPrice());
+            this.inventory.removeItem(equipment);
         } else {
             System.out.println("Du har desv\u00E6rre ikke nok point :(");
         }
@@ -46,7 +48,15 @@ public class Shop extends Room {
         }
     }
 
+<<<<<<< HEAD
+    private void printUpgradeMenu(){
+
+    }
+
+    private boolean checkPoints(int price)throws OutOfPointsException{
+=======
     private boolean checkPoints(int price) {
+>>>>>>> master
         try {
             if(Game.player.getPoints() < price)
                 throw new OutOfPointsException();

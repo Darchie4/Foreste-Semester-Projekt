@@ -254,7 +254,10 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
     public Room getCurrentRoom() {
         return currentRoom;
     }

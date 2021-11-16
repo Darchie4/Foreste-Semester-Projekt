@@ -1,5 +1,7 @@
 package worldofzuul;
 
+import Exceptions.OutOfPointsException;
+
 public class Equipment extends Item{
 
     private int modifier;
