@@ -153,7 +153,7 @@ public class Game {
             Item item = player.getInventory().searchItemName(command.getSecondWord());
                 if (player.getEquipmentInHand() == null) {
                     try {
-                        player.addItemToHand(item);
+                        player.addEquipmentToHand(equipment);
                     } catch (FullHandException e) {
                         e.printStackTrace();
                     }
@@ -254,6 +254,10 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     public Room getCurrentRoom() {
         return currentRoom;
     }

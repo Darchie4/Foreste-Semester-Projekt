@@ -48,11 +48,15 @@ public class Shop extends Room {
         }
     }
 
+<<<<<<< HEAD
     private void printUpgradeMenu(){
 
     }
 
     private boolean checkPoints(int price)throws OutOfPointsException{
+=======
+    private boolean checkPoints(int price) {
+>>>>>>> master
         try {
             if(Game.player.getPoints() < price)
                 throw new OutOfPointsException();
